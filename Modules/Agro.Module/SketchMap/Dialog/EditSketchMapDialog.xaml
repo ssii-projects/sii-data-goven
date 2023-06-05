@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Agro.Module.SketchMap.EditSketchMapDialog"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+			 xmlns:mui="clr-namespace:Agro.GIS.UI;assembly=Agro.LibMap"
+			 xmlns:m="clr-namespace:Agro.GIS;assembly=Agro.LibMap"
+			  mc:Ignorable="d" 
+                  d:DesignHeight="620"
+                  d:DesignWidth="680">
+    <Grid Background="{DynamicResource Metro_Window_Style_Background_Content}"
+          ClipToBounds="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Border Grid.Row="1"
+                Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+            <cmps:LoadingIcon Width="16"
+                              Height="16"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Visibility="{Binding Path=IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                              RenderOptions.BitmapScalingMode="NearestNeighbor"></cmps:LoadingIcon>
+        </Border>-->
+        <Border Grid.Row="1"
+                Visibility="{Binding IsBusy, Converter={StaticResource NotBoolToVisibilityConverter}}"
+                Padding="0">
+            <!--<Grid Name="grid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>-->
+			<DockPanel>
+				<Border Name="toolbar" Background="{DynamicResource Metro_Window_Style_Background_Lighter}"
+                        BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                        BorderThickness="0,0,0,1" DockPanel.Dock="Top"                       
+                        SnapsToDevicePixels="True">
+					<StackPanel Orientation="Horizontal">
+						<!--<cmps:TabControlItemRibbonContainer BorderThickness="0,0,1,0"
+                                                            TextVisibility="Collapsed">-->
+						<cui:ImageButton Name="btnSaveToFile"
+                                               Padding="2,3,5,3" Header="保存"
+                                               ToolTip="将纸张中内容保存为图片,并更新WORD文档中地块示意图"
+                                               Click="btnSaveToFile_Click" Image="../Resources/Images/32/Save32.png"
+                                               VerticalContentAlignment="Stretch">
+						</cui:ImageButton>
+						<!--</cmps:TabControlItemRibbonContainer>-->
+						<!--<cmps:TabControlItemRibbonContainer BorderThickness="0,0,1,0"
+                                                            TextVisibility="Collapsed">-->
+						<mui:PageZoomWholePageCommand/>
+						<mui:PageZoom100PercentCommand/>
+						<!--<cui:ImageButton Name="btnToPager"
+                                               Padding="2,3,5,3" Header="全图" Image="../Resources/Images/32/FullScreen.png"
+                                               ToolTip="将当前视图置为全图"
+                                               Click="btnToPager_Click"
+                                               VerticalContentAlignment="Stretch">
+						</cui:ImageButton>-->
+						<mui:SelectToolButton Name="btnSelectTool"/>
+						<!--<cmps:SuperButton Name="btnSelect"
+                                              Padding="2,3,5,3"
+                                              ToggleIsCheckedOnClick="True"
+                                              ImagePosition="Left"
+                                              ImageSpacing="3"
+                                              ToolTip="将选择工作设置为视图当前工具，您可以使用选择工具选择视图中的元素"
+                                              Image="pack://application:,,,/Agriculture.SketchMap;component/Resources/GroupInkSelect.png"
+                                              Content="选择"
+                                              VerticalContentAlignment="Center">
+                            </cmps:SuperButton>
+                            <metro:MetroButton Name="btnDelete"
+                                               Padding="2,3,5,3"
+                                               Click="btnDelete_Click"
+                                               Visibility="Collapsed"
+                                               ToolTip="删除选择的元素"
+                                               VerticalContentAlignment="Stretch">
+                                <cmps:ImageTextItem ImagePosition="Left"
+                                                    ImageTextSpacing="3"
+                                                    Image="pack://application:,,,/Agriculture.SketchMap;component/Resources/MailDelete.png"
+                                                    Text="删除" />
+                            </metro:MetroButton>
+                            <metro:MetroButton Name="btnEdit"
+                                               Padding="2,3,5,3"
+                                               Visibility="Collapsed"
+                                               ToolTip="编辑选择的元素"
+                                               VerticalContentAlignment="Stretch">
+                                <cmps:ImageTextItem ImagePosition="Left"
+                                                    ImageTextSpacing="3"
+                                                    Image="pack://application:,,,/Agriculture.SketchMap;component/Resources/Edit.png"
+                                                    Text="编辑" />
+                            </metro:MetroButton>
+                        </cmps:TabControlItemRibbonContainer>-->
+					</StackPanel>
+				</Border>
+				<Border Background="{DynamicResource Metro_Window_Style_Background_Lighter}"
+                        BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                        BorderThickness="0,1,0,1"
+                       DockPanel.Dock="Bottom"
+                        SnapsToDevicePixels="True">
+					<TextBlock Name="tabNeighbor" Height="20" Text="四至：" FontSize="15" Margin="0,0,0,0" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+				</Border>
+				<cui:SidebarPage Name="sidePage" LeftPanelWidth="200">
+					<cui:SidebarPage.LeftPanel>
+						<Border Background="{DynamicResource Metro_Window_Style_Background_Lighter}"
+                        BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                        BorderThickness="0,0,1,0"
+                      DockPanel.Dock="Left"
+                        SnapsToDevicePixels="True">
+							<ListBox
+                           Name="lstLand"
+                           BorderThickness="1"                          
+                           DisplayMemberPath="DKBM"
+                           SelectedValuePath="DKBM"
+                           SelectionChanged="MetroListBox_SelectionChanged">
+							</ListBox>
+							<!--local:SketchDrawPanel Width="100" x:Name="dp"></-->
+						</Border>
+					</cui:SidebarPage.LeftPanel>
+					<Border Background="{DynamicResource Metro_Window_Style_Background_Lighter}"
+                        BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                        BorderThickness="1,0,0,0"
+                        SnapsToDevicePixels="True">
+						<Grid>
+							<m:PageLayoutControl Name="pageLayout"/>
+							<Border  Name="bdrBottomMask" Background="{DynamicResource  Metro_Window_Style_Background_Content}"
+                                                           Visibility="{Binding ElementName=pageLayout, Path=Visibility, Converter={StaticResource ToggleVisibilityCollapsedConverter}}"
+>
+								<TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Lighter}"
+                   Text="该地块不存在"></TextBlock>
+							</Border>
+
+						</Grid>
+					</Border>
+				</cui:SidebarPage>
+
+			</DockPanel>
+		</Border>
+    </Grid>
+</UserControl>

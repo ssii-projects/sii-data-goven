@@ -1,0 +1,93 @@
+﻿// (C) 2015 公司版权所有，保留所有权利
+using System;
+
+
+using Agro.LibCore.Database;
+using GeoAPI.Geometries;
+
+namespace Agro.Library.Model
+{
+	/// <summary>
+	/// 行政地域
+	/// </summary>
+	[Serializable]
+    [DataTable("DLXX_XZDY", AliasName = "行政地域")]
+    public class DLXX_XZDY : Entity<DLXX_XZDY>
+	{
+		#region Properties
+
+		/// <summary>
+		/// 唯一标识
+		/// </summary>
+		[DataColumn("ID", Unique  = true, Nullable = false)]
+        public string ID { get; set; }= Guid.NewGuid().ToString();
+
+		/// <summary>
+		/// 标识码
+		/// </summary>
+		[DataColumn("BSM", AliasName = "标识码", Insertable =false ,Updatable =false)]
+        public int ObjectId { get; set; }
+
+        /// <summary>
+        /// 名称
+        /// </summary>
+        [DataColumn("MC", AliasName = "名称")]
+        public string MC { get; set; }
+
+        /// <summary>
+        /// 编码
+        /// </summary>
+        [DataColumn("BM", AliasName = "编码")]
+        public string BM { get; set; }
+
+        /// <summary>
+        /// 简称
+        /// </summary>
+        [DataColumn("JC", AliasName = "简称")]
+        public string JC { get; set; }
+
+        /// <summary>
+        /// 扩展名称
+        /// </summary>
+        [DataColumn("KZMC", AliasName = "扩展名称")]
+        public string KZMC { get; set; }
+
+        /// <summary>
+        /// 扩展编码
+        /// </summary>
+        [DataColumn("KZBM", AliasName = "扩展编码")]
+        public string KZBM { get; set; }
+
+        /// <summary>
+        /// 级别
+        /// </summary>
+        [DataColumn("JB", AliasName = "级别",FieldType =LibCore.eFieldType.eFieldTypeInteger)]
+        public eZoneLevel JB { get; set; }
+
+        /// <summary>
+        /// 上级标识
+        /// </summary>
+        [DataColumn("SJID", AliasName = "上级标识")]
+        public string SJID { get; set; }
+
+        /// <summary>
+        /// 控制面积
+        /// </summary>
+        [DataColumn("KZMJ", AliasName = "控制面积")]
+        public decimal? KZMJ { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DataColumn("BZ", AliasName = "备注")]
+        public string BZ { get; set; }
+
+		/// <summary>
+		/// 几何图形
+		/// </summary>
+		[DataColumn(GeometryType = LibCore.eGeometryType.eGeometryPolygon)]
+		public IGeometry SHAPE { get; set; }
+
+        #endregion
+    }
+}

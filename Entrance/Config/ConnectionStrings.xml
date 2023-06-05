@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultDataSource
+    name="SqlServerSource" />
+  <connectionStrings>
+    <remove
+      name="LocalSqlServer" />
+    <add
+  name="SqlServerSource"
+  connectionString="Data Source=127.0.0.1;Initial Catalog=GHSNYSJK;User ID=sa;Password=123456"
+  providerName="DataSource.SqlServer" />    
+    <!--<add
+      name="OracleSource"
+      connectionString="DATA SOURCE =ORCL33;USER ID=REGCERT;PASSWORD = 123456"
+      providerName="DataSource.Oracle" />-->
+  </connectionStrings>
+</configuration>

@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="Agro.Module.DataManage.MetaDataPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.DataManage"
+             xmlns:nux="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="600" d:DesignWidth="1400">
+    <UserControl.Resources>
+        <Color x:Key="Caption2_Background_Color"
+           A="255"
+           R="241"
+           G="241"
+           B="241"></Color>
+        <SolidColorBrush x:Key="Caption2_Background"   Color="{StaticResource Caption2_Background_Color}"/>
+
+        <Style x:Key="tbTextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+            <Setter Property="Padding" Value="5,2,2,2"/>
+            <Setter Property="Background" Value="{StaticResource Caption2_Background}"/>
+        </Style>
+        <Style x:Key="ckbStyle1" TargetType="TextBlock">
+            <!--<Setter Property="Width" Value="300"/>-->
+            <Setter Property="Margin" Value="10,5"/>
+        </Style>
+        <Style x:Key="ckbStyle2" TargetType="TextBlock">
+            <Setter Property="Width" Value="400"/>
+            <Setter Property="Margin" Value="10,5"/>
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Name="sp1">
+            <TextBlock Text="数据标识" Style="{StaticResource tbTextBlockStyle1}" Margin= "0,0,0,5"/>
+            <WrapPanel>
+                <StackPanel>
+                    <TextBlock Text="名称：" Name="tbName" Style="{StaticResource ckbStyle1}"  Tag="1"/>
+                    <TextBlock Text="日期：" Name="tbDate"  Style="{StaticResource ckbStyle1}"  Tag="1"/>
+                    <TextBlock Text="行政区代码：" Name="tbgeoID"  Style="{StaticResource ckbStyle1}"  Tag="1"/>
+                    <TextBlock Text="版本：" Name="tbdataEdition"  Style="{StaticResource ckbStyle1}"  Tag="1"/>
+                </StackPanel>
+                <StackPanel MaxWidth="500">
+                    <TextBlock Name="tbdataLang" Text="语种：" Style="{StaticResource ckbStyle1}"  Tag="2"/>
+                    <TextBlock  Text="摘要：" Name="tbidAbs" Style="{StaticResource ckbStyle1}"  TextWrapping="Wrap"/>
+                    <TextBlock  Text="现状：" Name="tbstatus" Style="{StaticResource ckbStyle1}"  Tag="2"/>
+                    <TextBlock  Text="终止时间：" Name="tbending" Style="{StaticResource ckbStyle1}"  Tag="2"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Name="tbrpOrgName" Text="负责单位名称：" Style="{StaticResource ckbStyle1}"  Tag="3"/>
+                    <TextBlock  Text="联系人：" Name="tbrpCnt" Style="{StaticResource ckbStyle1}"  Tag="3"/>
+                    <TextBlock  Text="电话：" Name="tbvoiceNum" Style="{StaticResource ckbStyle1}"  Tag="3"/>
+                    <TextBlock  Text="传真：" Name="tbfaxNum" Style="{StaticResource ckbStyle1}"   Tag="3"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Name="tbcntAddress" Text="通信地址：" Style="{StaticResource ckbStyle1}"  Tag="4"/>
+                    <TextBlock  Text="邮政编码：" Name="tbcntCode" Style="{StaticResource ckbStyle1}"  Tag="4"/>
+                    <TextBlock  Text="电子邮箱地址：" Name="tbcntEmail" Style="{StaticResource ckbStyle1}"  Tag="4"/>
+                    <TextBlock  Text="安全等级代码：" Name="tbclassCode" Style="{StaticResource ckbStyle1}"  Tag="4"/>
+                </StackPanel>
+            </WrapPanel>
+            <TextBlock Text="空间参考系" Style="{StaticResource tbTextBlockStyle1}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="大地坐标参照系统名称：" Name="tbcoorRSID"  Style="{StaticResource ckbStyle1}" Width="420"  Tag="1"/>
+                <TextBlock  Text="东偏移：" Name="tbeastFAL" Style="{StaticResource ckbStyle1}"  Tag="2"/>
+                <TextBlock  Text="分带方式：" Name="tbcoorFDKD" Style="{StaticResource ckbStyle1}"  Width="250" Tag="3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="中央子午线：" Name="tbcentralMer" Style="{StaticResource ckbStyle1}" Width="420"  Tag="1"/>
+                <TextBlock  Text="北偏移：" Name="tbnorthFAL" Style="{StaticResource ckbStyle1}"  Tag="2"/>
+            </StackPanel>
+            <TextBlock Text="数据内容" Style="{StaticResource tbTextBlockStyle1}" />
+            <nux:GridView x:Name="grid1"/>
+            <TextBlock Text="数据质量" Style="{StaticResource tbTextBlockStyle1}" />
+            <TextBlock Text="数据质量概述：" Name="tbdqStatement"  Margin="10,5" TextWrapping="Wrap"/>
+            <TextBlock  Text="数据志："  Name="tbdqLineage"  Margin="10,5" TextWrapping="Wrap"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

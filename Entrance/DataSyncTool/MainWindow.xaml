@@ -1,0 +1,29 @@
+﻿<Window x:Class="DataSyncTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+		xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+		FontSize="16"
+        Title="承包经营权外网数据同步工具" WindowStartupLocation="CenterScreen" Height="350.4" Width="796" WindowState="Maximized">
+	<Window.Resources>
+		<ResourceDictionary>
+			<Style x:Key="mybtnStyle" TargetType="Button">
+				<Setter Property="Height" Value="50"/>
+				<Setter Property="Margin" Value="10"/>
+			</Style>
+		</ResourceDictionary>
+	</Window.Resources>
+	<DockPanel >
+		<Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+			<StackPanel  Orientation="Horizontal" SnapsToDevicePixels="True">
+				<cui:TaskPageToolbar Name="toolbar"  />
+				<cui:RibbonGroupContainer Header="配置">
+					<cui:ImageButton Name="btnDataSource" Header="数据源" Image="Resources/Images/32/Oracle.png"/>
+				</cui:RibbonGroupContainer>
+			</StackPanel>
+		</Border>
+		<cui:TaskPage Name="taskPage" ToolbarVisible="False"/>
+	</DockPanel>
+</Window>

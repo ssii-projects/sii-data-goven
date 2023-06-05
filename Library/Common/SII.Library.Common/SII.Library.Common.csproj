@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{974267B7-EB0E-4495-9BC2-1D246021AF43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agro.Library.Common</RootNamespace>
+    <AssemblyName>Agro.Library.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64Release|AnyCPU'">
+    <OutputPath>bin\x64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64Release|x86'">
+    <OutputPath>bin\x86\x64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64Release|x64'">
+    <OutputPath>bin\x64\x64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Agro.FrameWork">
+      <HintPath>..\..\..\Dependencies\SII\Agro.FrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibCore">
+      <HintPath>..\..\..\Dependencies\SII\Agro.LibCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibMap">
+      <HintPath>..\..\..\Dependencies\SII\Agro.LibMap.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\..\..\Dependencies\NTS\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\..\..\Dependencies\NTS\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="Common\CodeItem.cs" />
+    <Compile Include="Common\HJDataRootPath.cs" />
+    <Compile Include="Common\ReportInfo.cs" />
+    <Compile Include="Controls\AppOptionPanel.xaml.cs">
+      <DependentUpon>AppOptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ZoneTree.xaml.cs">
+      <DependentUpon>ZoneTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ShortZone.cs" />
+    <Compile Include="Enitity\BDC_JR_DK.cs" />
+    <Compile Include="Enitity\CS_SYSINFO.cs" />
+    <Compile Include="Enitity\DLXX_DK_JZD.cs" />
+    <Compile Include="Enitity\DLXX_DK_JZX.cs" />
+    <Compile Include="Enitity\Pad\DC_DLXX_DK.cs" />
+    <Compile Include="Enitity\Pad\DC_QSSJ_CBF_JTCY.cs" />
+    <Compile Include="Enitity\Pad\DC_QSSJ_CBF.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_CBF.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_CBF_JTCY.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_DJB.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_CBHT.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_DKXX.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_QZ.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_QZBF.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_QZHF.cs" />
+    <Compile Include="Enitity\DJ_CBJYQ_YDJB.cs" />
+    <Compile Include="Enitity\DLXX_DK.cs" />
+    <Compile Include="Enitity\DLXX_DK_TXBGJL.cs" />
+    <Compile Include="Enitity\DLXX_XZDY.cs" />
+    <Compile Include="Enitity\JCSJ_SJHZ.cs" />
+    <Compile Include="Enitity\Pad\DC_QSSJ_FBF.cs" />
+    <Compile Include="Enitity\Pad\VEC_SURVEY_DK.cs" />
+    <Compile Include="Enitity\QSSJ_CBDKXX.cs" />
+    <Compile Include="Enitity\QSSJ_CBF.cs" />
+    <Compile Include="Enitity\QSSJ_CBF_JTCY.cs" />
+    <Compile Include="Enitity\QSSJ_CBHT.cs" />
+    <Compile Include="Enitity\QSSJ_CBJYQZ.cs" />
+    <Compile Include="Enitity\QSSJ_CBJYQZDJB.cs" />
+    <Compile Include="Enitity\QSSJ_CBJYQZ_QZBF.cs" />
+    <Compile Include="Enitity\QSSJ_CBJYQZ_QZHF.cs" />
+    <Compile Include="Enitity\QSSJ_CBJYQZ_QZZX.cs" />
+    <Compile Include="Enitity\QSSJ_FBF.cs" />
+    <Compile Include="Enitity\QSSJ_LZHT.cs" />
+    <Compile Include="Enitity\QSSJ_QSLYZLFJ.cs" />
+    <Compile Include="Enitity\SEC_ID_USER.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Enitity\XTPZ_LSH.cs" />
+    <Compile Include="Enitity\XTPZ_SJZD.cs" />
+    <Compile Include="Enitity\XTPZ_TDLYXZFL.cs" />
+    <Compile Include="Enum\eContractorType.cs" />
+    <Compile Include="Enum\eCredentialsType.cs" />
+    <Compile Include="Enum\eDklbCode.cs" />
+    <Compile Include="Enum\eGender.cs" />
+    <Compile Include="Enum\eLandPropertyType.cs" />
+    <Compile Include="Enum\eOrder.cs" />
+    <Compile Include="Enum\eSfjbntCode.cs" />
+    <Compile Include="Enum\eTdlylxCode.cs" />
+    <Compile Include="Enum\eTdytCode.cs" />
+    <Compile Include="Enum\eZoneLevel.cs" />
+    <Compile Include="MyGlobal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Repository\BdcJrDkRepos.cs" />
+    <Compile Include="Repository\CrudRepository.cs" />
+    <Compile Include="Repository\CsSysInfoRepository.cs" />
+    <Compile Include="Repository\DcCbfJtcyRepos.cs" />
+    <Compile Include="Repository\DcCbfRepos.cs" />
+    <Compile Include="Repository\DcDlxxDkRepos.cs" />
+    <Compile Include="Repository\DjCbfRepository.cs" />
+    <Compile Include="Repository\DjCbhtRepository.cs" />
+    <Compile Include="Repository\DjDjbRepository.cs" />
+    <Compile Include="Repository\DjDkxxRepository.cs" />
+    <Compile Include="Repository\DjYdjbRepository.cs" />
+    <Compile Include="Repository\DlxxDkRepository.cs" />
+    <Compile Include="Repository\DlxxXzdyRepository.cs" />
+    <Compile Include="Repository\QssjCbfJtcyRepository.cs" />
+    <Compile Include="Repository\QssjCbfRepository.cs" />
+    <Compile Include="Repository\QssjCbhtRepository.cs" />
+    <Compile Include="Repository\QssjDjbRepository.cs" />
+    <Compile Include="Repository\QssjDkxxRepository.cs" />
+    <Compile Include="Repository\SjhzRepository.cs" />
+    <Compile Include="Repository\TxbgjlRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\XtpzLshRepository.cs" />
+    <Compile Include="Service\XtpzLshService.cs" />
+    <Compile Include="Util\CodeUtil.cs" />
+    <Compile Include="Util\LayerWhereUtil.cs" />
+    <Compile Include="Util\LogUtil.cs" />
+    <Compile Include="Util\MyImageUtil.cs" />
+    <Compile Include="Util\MyDBUtil.cs" />
+    <Compile Include="Util\MyMapUtil.cs" />
+    <Compile Include="Util\UserUtil.cs" />
+    <Compile Include="Util\ZoneUtil.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\AppOptionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ZoneTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\DefaultStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\Map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\FileOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\32\GroupLayer.png" />
+    <Resource Include="Resources\Images\32\Navigator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\overview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\userIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\region.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\24\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\32\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\32\bsSame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\history.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)WorkSpace\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

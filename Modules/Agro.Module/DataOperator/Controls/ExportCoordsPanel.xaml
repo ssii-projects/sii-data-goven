@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Agro.Module.DataOperator.ExportCoordsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.DataOperator"
+			 xmlns:kui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Grid Background="{DynamicResource Metro_Window_Style_Background_Content}"
+          ClipToBounds="True">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<!--<RowDefinition Height="Auto"></RowDefinition>-->
+			<!--<RowDefinition Height="Auto"></RowDefinition>-->
+		</Grid.RowDefinitions>
+		<Border Name="bdrProgress" Grid.Row="1"
+                Visibility="Collapsed">
+			<kui:LoadingIcon Width="16"
+                              Height="16"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Visibility="{Binding Path=IsBusy, Converter={StaticResource BoolToVisibilityHiddenConverter}}"
+                              RenderOptions.BitmapScalingMode="NearestNeighbor"></kui:LoadingIcon>
+		</Border>
+		<Border Grid.Row="1"
+                Visibility="{Binding XPath=IsBusy, Converter={StaticResource NotBoolToVisibilityHiddenConverter}}"
+                Padding="10,0,10,0">
+			<StackPanel Orientation="Vertical">
+				<StackPanel Orientation="Vertical"
+                            Margin="10,10,10,0">
+					<DockPanel Margin="0,5,0,0">
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="100"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070132}"></TextBlock>
+						<ComboBox Name="cbRange"
+                                            SelectedIndex="0"
+                                            Height="28"
+                                            Padding="6,4,6,5">
+							<!--<ComboBoxItem Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070130}"
+                                                    Tag="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070130}"></ComboBoxItem>
+							<ComboBoxItem Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070131}"
+                                                    Tag="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070131}"></ComboBoxItem>-->
+							<ComboBoxItem Content="图层中选中的数据"/>
+						</ComboBox>
+					</DockPanel>
+					<DockPanel Margin="0,5,0,0">
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="100"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=lang3070133}"></TextBlock>
+						<!--<kui:ImageTextBox x:Name="txtPath"
+                                                     TextChanged="FileBrowserTextBox_TextChanged"
+                                          Image="../Resources/Images/16/FileOpen.png"></kui:ImageTextBox>-->
+						<kui:FolderBrowserTextBox Name="txtPath"/>
+					</DockPanel>
+				</StackPanel>
+
+			</StackPanel>
+		</Border>
+	</Grid>
+</UserControl>

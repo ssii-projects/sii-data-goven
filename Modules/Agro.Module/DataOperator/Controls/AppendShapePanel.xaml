@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Agro.Module.DataOperator.AppendShapePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.DataOperator"
+			  xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style x:Key="LeftTextBoxStyle" TargetType="TextBlock">
+			<Setter Property="Width" Value="120"/>
+			<Setter Property="TextAlignment" Value="Right"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="DockPanelStyle1" TargetType="DockPanel">
+			<Setter Property="Margin" Value="2"/>
+		</Style>
+		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
+			<Setter Property="Margin" Value="4,0"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Resources>
+	<StackPanel Margin="0,40,0,0">
+		<DockPanel Style="{StaticResource DockPanelStyle1}">
+			<TextBlock Name="textBlock" Text="导入文件路径:" DockPanel.Dock="Left"  Style="{StaticResource LeftTextBoxStyle}"/>
+			<cui:FileBrowserTextBox Name="tbPath" Margin="4,0"/>
+		</DockPanel>
+		<DockPanel Style="{StaticResource DockPanelStyle1}" Name="dpProgress" Visibility="Collapsed">
+			<TextBlock Name="tbProgress" Text="进度:" DockPanel.Dock="Left"  Style="{StaticResource LeftTextBoxStyle}"/>
+			<ProgressBar Name="progressBar" Height="30" Margin="4,0"/>
+		</DockPanel>
+	</StackPanel>
+</UserControl>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DefaultDataSource
+    name="zhengshi" />
+  <connectionStrings>
+    <remove
+      name="LocalSqlServer" />
+    <add
+      name="zhengshi"
+      connectionString="Data Source=192.168.84.7;Initial Catalog=ydsnjq;User ID=sa;Password=yds@123456"
+      providerName="DataSource.SqlServer" />
+    <add
+      name="lianxi"
+      connectionString="Data Source=192.168.84.7;Initial Catalog=ydsnjq_lx;User ID=sa;Password=yds@123456"
+      providerName="DataSource.SqlServer" />
+  </connectionStrings>
+</configuration>

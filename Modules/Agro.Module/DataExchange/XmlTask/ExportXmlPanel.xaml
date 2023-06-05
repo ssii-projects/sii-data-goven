@@ -1,0 +1,107 @@
+﻿<cui:TaskPropertyPage x:Class="Agro.Module.DataExchange.ExportXmlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" Background="{DynamicResource Metro_Window_Style_Background_Content}"
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style x:Key="LeftTextBoxStyle" TargetType="TextBlock">
+			<Setter Property="Width" Value="120"/>
+			<Setter Property="TextAlignment" Value="Right"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>		
+	</UserControl.Resources>
+	<DockPanel >
+		<cui:OptionsContainer Name="ocBasePrm" Header="基本参数" DockPanel.Dock="Top">
+			<StackPanel>
+				<DockPanel Margin="0,5">
+					<TextBlock Name="textBlock" Text="数据保存路径：" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+					<cui:FolderBrowserTextBox Name="tbPath" IsReadOnly="False"/>
+				</DockPanel>
+				<DockPanel >
+					<TextBlock Text="办理时间&gt;=：" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+					<DatePicker Name="dpLastCjrq"  VerticalContentAlignment="Center" Height="{Binding ElementName=tbPath, Path=ActualHeight}"/>
+				</DockPanel>
+				<DockPanel Margin="0,5">
+					<TextBlock Text="接入码：" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+					<TextBox Name="tbJrm" VerticalContentAlignment="Center" Height="{Binding ElementName=tbPath, Path=ActualHeight}"/>
+				</DockPanel>				
+			</StackPanel>
+		</cui:OptionsContainer>
+		<Border Background="{DynamicResource Metro_Window_Style_Background}"
+                DockPanel.Dock="Top"
+                Margin="0,0,0,0">
+			<DockPanel>
+				<StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="0,0,0,0">
+					<Button Name="btnSelectAll" Content="全选" Click="Btn_Click"/>
+					<Button Name="btnNotSelectAll" Content="全不选" Click="Btn_Click"/>
+					<Button Name="btnXorSelect" Content="反选" Click="Btn_Click"/>
+				</StackPanel>
+				<TextBlock Foreground="{DynamicResource GlyphBrush}"
+                       FontWeight="Bold" VerticalAlignment="Center"
+                           Margin="5,0"
+                       Text="导出数据"/>
+			</DockPanel>
+		</Border>
+
+		<ListView x:Name="listView" 
+              VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center"
+              BorderThickness="0">
+			<ListView.Resources>
+				<Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource Metro_ListView_HeaderContainer_Sytle}">
+					<Setter Property="HorizontalContentAlignment" Value="Center"/>
+					<Setter Property="Height" Value="32"/>
+				</Style>
+			</ListView.Resources>
+			<ListView.ItemContainerStyle>
+				<Style TargetType="ListViewItem" BasedOn="{StaticResource Metro_ListView_ItemContainer_Sytle}">
+					<Setter Property="MinHeight" Value="32"/>
+				</Style>
+			</ListView.ItemContainerStyle>
+			<ListView.View>
+				<GridView >
+					<GridViewColumn Header="..."   Width="32" x:Name="clmOrder">
+						<!--<GridViewColumn.Header>
+							<CheckBox/>
+						</GridViewColumn.Header>-->
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<CheckBox IsChecked="{Binding IsChecked}" VerticalAlignment="Center" Width="16"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+
+					<GridViewColumn  Header="业务号"  Width="190" x:Name="clmYwh">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Ywh}" TextAlignment="Center" VerticalAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=clmYwh}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn   Width="350" x:Name="clmYwmc" Header="业务名称" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Ywmc}" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Left" MinWidth="{Binding Path=ActualWidth,ElementName=clmYwmc}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn   Width="170" x:Name="clmBlsj" Header="办理时间" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Blsj}" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Left" MinWidth="{Binding Path=ActualWidth,ElementName=clmBlsj}"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>					
+				</GridView>
+			</ListView.View>
+			<!--<ListView.ContextMenu>
+				<ContextMenu Name="ctxMenu">
+					<MenuItem x:Name="miCopy" Header="复制"/>
+					<MenuItem x:Name="miCopyAll" Header="复制所有"/>
+				</ContextMenu>
+			</ListView.ContextMenu>-->
+		</ListView>
+	</DockPanel>
+</cui:TaskPropertyPage>

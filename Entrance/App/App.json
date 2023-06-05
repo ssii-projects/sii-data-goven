@@ -1,0 +1,15 @@
+﻿{
+	"ProductInfo": {
+		"Title": "农村土地承包经营权数据库管理系统",
+		"Version": "1.0.0.0102",
+		"Description": "提供数据分析入库、查询统计、主题分析、数据更新等相关功能"
+	},
+	"Support": {
+		"Email": "",
+		"PhoneNum": "",
+		"Copyright": ""
+	},
+	"LoginForm": {
+		"BottomText": ""
+	}
+}

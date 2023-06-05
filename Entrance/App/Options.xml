@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Options Width="700" Visible="True" ResizeMode="CanResizeWithGrip">
+    <Option Title="版权" Dll="Agro.FrameWork" Class=".CopyRightPanel"/>
+    <Option Title="数据源" Dll="Agro.LibCore" Class=".UI.DataSourceSelectPanel"/>
+  <Option Title="系统设置" Dll="Agro.Library.Common" Class=".AppOptionPanel"/>
+</Options>

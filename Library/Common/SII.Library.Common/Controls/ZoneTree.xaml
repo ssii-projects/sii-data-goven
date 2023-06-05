@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Agro.Library.Common.ZoneTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Library.Common"
+             xmlns:mui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <TreeView x:Name="treeView" Grid.Row="2" Margin="0,0,-1,0" Style="{DynamicResource Metro_TreeView_Style}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                <DockPanel LastChildFill="True"
+                                           HorizontalAlignment="Stretch"                               
+                                           Height="32">
+                    <!--<CheckBox DockPanel.Dock="Left"
+                                              Margin="4,0,0,0"
+                                              VerticalAlignment="Center"
+                                              Tag="{Binding Path=Layer}"  IsChecked="{Binding Path=IsChecked,Mode=TwoWay}" 
+                                              Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ></CheckBox>-->
+                    <!--<Grid DockPanel.Dock="Left"
+                                          Margin="0"
+                                          Width="20"
+                                          Height="24">
+                        <Image Source="{Binding Path=Icon}" DockPanel.Dock="Left" MaxWidth="24" MaxHeight="24" Margin="0,0,2,0"
+                               Tag="{Binding}"
+                                   Visibility="{Binding Path=IsBusy,Converter={StaticResource NotBoolToVisibilityConverter}}"/>
+                        <mui:LoadingIcon Width="16"
+                                                          Height="16"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          Visibility="{Binding Path=IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          RenderOptions.BitmapScalingMode="NearestNeighbor"></mui:LoadingIcon>
+
+                    </Grid>-->
+					<Image Source="{Binding Icon}" RenderOptions.BitmapScalingMode="HighQuality" DockPanel.Dock="Left" Stretch="None"/>
+
+					<TextBlock Text="{Binding Path=Title}" VerticalAlignment="Center"
+                                               Margin="0,0,0,1" />
+                </DockPanel>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>

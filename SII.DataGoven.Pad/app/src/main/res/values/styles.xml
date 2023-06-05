@@ -1,0 +1,55 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+    </style>
+
+    <style name="PopupAnimation">
+        <!-- 进来的时候的动画 -->
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <!-- 退出的时候的动画 -->
+        <item name="android:windowExitAnimation">@anim/popup_exit</item>
+    </style>
+
+    <style name="RightEnterAnimation">
+        <!-- 进来的时候的动画 -->
+        <item name="android:windowEnterAnimation">@anim/right_enter</item>
+        <!-- 退出的时候的动画 -->
+        <item name="android:windowExitAnimation">@anim/right_exit</item>
+    </style>
+
+    <style name="MyEditext" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!-- AppCompatEditText默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">#bbbbbb</item>
+        <!-- AppCompatEditText选择的底线颜色 -->
+        <item name="colorControlActivated">#6AB5FF</item>
+
+    </style>
+
+    <style name="textstyleShadow">
+        <item name="android:shadowColor">#ffffffff</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+
+    </style>
+</resources>

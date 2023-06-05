@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
+    <include layout="@layout/form_info_top_bar" />
+
+    <FrameLayout
+        android:id="@+id/cbf_prop_from_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+
+
+        <com.sii.datagovenpad.control.TabItem
+            android:id="@+id/ti_cbf_prop"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            app:text="属性" />
+
+        <com.sii.datagovenpad.control.TabItem
+            android:id="@+id/ti_cbf_jtcy"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:visibility="visible"
+            app:text="家庭成员">
+
+        </com.sii.datagovenpad.control.TabItem>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+<!--        <com.sii.datagovenpad.control.ToolButton-->
+<!--            android:id="@+id/tb_prop_save"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:visibility="visible"-->
+<!--            app:image_normal="@mipmap/ic_yes"-->
+<!--            app:text="保存" />-->
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="Agro.Module.Map.DataQueryControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.Map"
+			 xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style x:Key="MyListBoxItemStyle" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Metro_ListBoxItem_Style}">
+			<Setter Property="Padding" Value="0,0,0,0"/>
+		</Style>
+		<Style x:Key="MyToggleButtonStyle" TargetType="ToggleButton" 
+			   BasedOn="{StaticResource Metro_ToggleButton_Style}">
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		</Style>
+	</UserControl.Resources>
+	<DockPanel>
+		<TextBlock DockPanel.Dock="Top"
+                   Name="title"
+                   Margin="10,10,10,10"
+                   FontSize="20"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                   Text="数据查询"></TextBlock>
+		<DockPanel DockPanel.Dock="Bottom" Margin="10">
+			<TextBlock Text="缓冲距离：" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+			<cui:DoubleUpDown Minimum="0"
+                                          Name="tbBufferSize"
+							  IsEnabled="False"
+                                                 DockPanel.Dock="Left"
+                                                 Increment="5"
+                                                 Height="25"
+							  Value="5"
+                                                 Maximum="500"
+                                                 ></cui:DoubleUpDown>
+		</DockPanel>
+		<Border 
+                BorderThickness="0,1,0,0"
+                Margin="5,0,3,3"
+                Padding="0,3,0,0"
+                BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+			<StackPanel Name="toolbar">
+				<local:PointQueryToolButton x:Name="dqtb" Style="{StaticResource MyToggleButtonStyle}"/>
+				<local:LineQueryToolButton x:Name="lqtb" Style="{StaticResource MyToggleButtonStyle}"/>
+				<local:AreaQueryToolButton x:Name="aqtb" Style="{StaticResource MyToggleButtonStyle}"/>
+				<local:BoxQueryToolButton x:Name="bqtb" Style="{StaticResource MyToggleButtonStyle}"/>
+				<ToggleButton Name="tbQuyuCx" Content="行政区域查询" Style="{StaticResource MyToggleButtonStyle}"/>
+			</StackPanel>
+			<!--<ListBox x:Name="lstBox" HorizontalContentAlignment="Stretch"
+                     ItemContainerStyle="{StaticResource MyListBoxItemStyle}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<DockPanel Height="32" HorizontalAlignment="Stretch" LastChildFill="True" ToolTip="{Binding ToolTip}">
+							<Image Margin="4,0" DockPanel.Dock="Left" Source="{Binding Path=BitmapImg}" Stretch="None"/>
+							<TextBlock DockPanel.Dock="Right"
+                                               Margin="10,0,10,0" VerticalAlignment="Center"
+                                               Text="{Binding ParentText}"
+                                       
+                                               Foreground="{DynamicResource Metro_Window_Style_Foreground_Lighter}"></TextBlock>
+							<TextBlock Text="{Binding Path=Title}" VerticalAlignment="Center" />
+						</DockPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>-->
+		</Border>
+	</DockPanel>
+</UserControl>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#787858</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="colorCheck">#ffffbb33</color>
+
+    <color name="colorToolBarBkgnd">#55ACEE</color>
+    <color name="colorline">#74B267</color>
+    <color name="zhuangti">#00000000</color>
+    <color name="qianlan">#A6BDFF</color>
+    <color name="ziti">#323232</color>
+    <color name="lvseziti">#88BF4A</color>
+    <color name="qianhuibg">#343E4A</color>
+    <color name="red">#ff0000</color>
+    <color name="asbg">#66ab56</color>
+    <color name="anbg">#292929</color>
+    <color name="an1bg">#4e4e4e</color>
+    <color name="smzt">#939393</color>
+    <color name="colorPanel">#F2F2F2</color>
+    <color name="colorTextReadOnly">#bbbbbb</color>
+</resources>

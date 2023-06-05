@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/conform_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:text="标题"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/conform_dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="20dp"
+        android:minWidth="400dp"
+        android:text="文档已改变，是否保存？" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_conform_dialog_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0"
+            android:background="@drawable/btn_bottom_confirm_bg"
+            android:text="否"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btn_conform_dialog_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0"
+            android:background="@drawable/btn_bottom_confirm_bg"
+            android:text="是"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+﻿<Application x:Class="Agro.FrameApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Agro.LibMap;component/Themes/DefaultStyle.xaml"/>
+                <ResourceDictionary Source="/Agro.Library.Common;component/Themes/DefaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>         
+    </Application.Resources>
+</Application>

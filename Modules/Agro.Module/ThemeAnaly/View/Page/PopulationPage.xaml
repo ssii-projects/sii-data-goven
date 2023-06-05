@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Agro.Module.ThemeAnaly.View.Page.PopulationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.ThemeAnaly.View"
+             xmlns:control="clr-namespace:Agro.Module.ThemeAnaly.View.Control"
+             xmlns:control1="clr-namespace:Agro.Module.ThemeAnaly.View.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <control1:ChartColumWithTitle Grid.Row="0"  DataContext="{Binding ChartColumWithTitleViewModel}"  >
+        </control1:ChartColumWithTitle>
+        <control1:ChartPiesWithTitleBar Grid.Row="1" DataContext="{Binding ChartPiesWithTitleBarViewModel}"/>
+    </Grid>
+</UserControl>

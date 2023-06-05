@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\Fonts\esri_40.ttf" />
+    <None Remove="Data\Fonts\simhei.ttf" />
+    <None Remove="Data\Fonts\simsun.ttc" />
+  </ItemGroup>
+	<ItemGroup>
+		<!--<PackageReference Include="Select.HtmlToPdf" Version="22.2.0" />-->
+		<PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
+		<PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta15" />
+		<!--<PackageReference Include="SkiaSharp" Version="2.88.3" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.3" />-->
+		<PackageReference Include="NetTopologySuite.Core" Version="1.15.3" />
+		<PackageReference Include="ProjNET4GeoAPI" Version="1.4.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<!--<PackageReference Include="Aspose.Words" Version="23.3.0" />
+		<PackageReference Include="Aspose.Cells" Version="23.3.0" />
+		<PackageReference Include="NPOI" Version="2.6.0" />-->
+		<!--<PackageReference Include="Spire.Doc" Version="11.3.1" />-->
+		<PackageReference Include="DocumentFormat.OpenXml" Version="2.19.0" />
+		<!--<PackageReference Include="FreeSpire.Doc" Version="10.8.0" />-->
+		<!--<PackageReference Include="GemBox.Document" Version="35.0.1300" />
+		<PackageReference Include="PdfSharpCore" Version="1.3.47" />
+		<PackageReference Include="Select.HtmlToPdf.NetCore" Version="22.2.0" />
+		<PackageReference Include="Leadtools.Image.Processing" Version="22.0.0.6" />-->
+		<PackageReference Include="QuestPDF" Version="2022.12.2" />
+		<!--<PackageReference Include="HarfBuzzSharp" Version="2.8.2.3" />-->
+		<PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="2.8.2.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Data\Template\" />
+	  <Folder Include="Data\TestData\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Agro\Agro.csproj" />
+	  <ProjectReference Include="..\SkiaMap\SkiaMap.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Data\Fonts\esri_40.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Data\Fonts\simhei.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Data\Fonts\simsun.ttc">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Data\Fonts\simfang.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\Template\农村土地承包经营权承包地块示意图.docx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\Template\地块示意图\地块四至示意图.kpd">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\Template\地块示意图\地块鹰眼图.kpd">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\TestData\xlqnjq.db">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

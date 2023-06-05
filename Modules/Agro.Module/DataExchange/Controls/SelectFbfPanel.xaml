@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="Agro.Module.DataExchange.SelectFbfPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.DataExchange"
+			 xmlns:cmm="clr-namespace:Agro.Library.Common;assembly=Agro.Library.Common"
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<DockPanel>
+		<cmm:ZoneTree Name="zoneTree" DockPanel.Dock="Left" Width="200"/>
+		<cui:MetroTreeListView x:Name="listView1" BorderThickness="1" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+			<cui:MetroTreeListView.Resources>
+				<Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource Metro_ListView_HeaderContainer_Sytle}">
+					<Setter Property="Height" Value="30"/>
+					<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+				</Style>
+			</cui:MetroTreeListView.Resources>
+			<!--<cui:MetroTreeListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource Metro_ListView_ItemContainer_Sytle}">
+                        <Setter Property="Height" Value="25"/>
+                    </Style>
+                </cui:MetroTreeListView.ItemContainerStyle>-->
+
+			<cui:MetroTreeListView.View>
+				<GridView >
+					<GridViewColumn DisplayMemberBinding="{Binding FbfBM}" Header=" 发包方编码" Width="150"/>
+					<GridViewColumn DisplayMemberBinding="{Binding FbfMC}" Header=" 发包方名称" Width="280"/>
+				</GridView>
+			</cui:MetroTreeListView.View>
+			<!--<cui:MetroTreeListView.GroupStyle>
+				<GroupStyle>
+					<GroupStyle.ContainerStyle>
+						<Style TargetType="{x:Type GroupItem}">
+							<Setter Property="Template">
+								<Setter.Value>
+									<ControlTemplate TargetType="{x:Type GroupItem}">
+										<DockPanel >
+											<Button DockPanel.Dock="Top" >
+												<Button.Resources>
+
+													<SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+													<SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+													<SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+													<SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+													<SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+													<SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+													<SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+													<SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+													<SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+													<Style TargetType="Button">
+														<Setter Property="Template">
+															<Setter.Value>
+																<ControlTemplate TargetType="{x:Type Button}">
+																	<Border Name="border" Background="White" Height="25">
+																		<DockPanel>
+																			<TextBlock FontWeight="Bold" Text="{Binding Path=Name}" Margin="10,0,5,0" VerticalAlignment="Center"  DockPanel.Dock="Left" HorizontalAlignment="Left"/>
+																			<TextBlock FontWeight="Bold" Text="(" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+																			<TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+																			<TextBlock FontWeight="Bold" Text=")" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+																			<Border Height="1" Margin="4,0" Background="LightBlue"/>
+																		</DockPanel>
+																	</Border>
+																	<ControlTemplate.Triggers>
+																		<Trigger Property="IsDefaulted" Value="true">
+																			<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+																		</Trigger>
+																		<Trigger Property="IsMouseOver" Value="true">
+																			<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+																			<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+																		</Trigger>
+																		<Trigger Property="IsPressed" Value="true">
+																			<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+																			<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+																		</Trigger>
+																		<Trigger Property="IsEnabled" Value="false">
+																			<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+																			<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+																		</Trigger>
+																	</ControlTemplate.Triggers>
+																</ControlTemplate>
+
+															</Setter.Value>
+														</Setter>
+													</Style>
+												</Button.Resources>
+											</Button>
+											<ItemsPresenter/>
+										</DockPanel>
+									</ControlTemplate>
+								</Setter.Value>
+							</Setter>
+						</Style>
+					</GroupStyle.ContainerStyle>
+				</GroupStyle>
+			</cui:MetroTreeListView.GroupStyle>-->
+		</cui:MetroTreeListView>
+	</DockPanel>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Agro.Module.ThemeAnaly.View.Control.ChartPies"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.ThemeAnaly.View.Control"
+             xmlns:control="clr-namespace:Agro.Module.ThemeAnaly.View.Control"
+             mc:Ignorable="d" 
+             >
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ListBox Name="lstBox" ItemsSource="{Binding ChartPieViewModels}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" ></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <control:ChartPie  Width="330" Height="275" VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                         BorderThickness="0" Title="{Binding Title}" Rows="{Binding Rows}" ></control:ChartPie>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </ScrollViewer>
+</UserControl>

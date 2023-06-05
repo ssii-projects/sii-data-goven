@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_shadow_selector"
+    android:descendantFocusability="blocksDescendants"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <com.sii.datagovenpad.control.ListItemKeyValue
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="承包方编码"
+        android:tag="cbfbm"
+        />
+
+    <com.sii.datagovenpad.control.ListItemKeyValue
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="承包方名称"
+        android:tag="cbfmc"/>
+
+    <com.sii.datagovenpad.control.ListItemKeyValue
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="证件号码"
+        android:tag="cbfzjhm"/>
+
+    <com.sii.datagovenpad.control.ListItemKeyValue
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="承包方类型"
+        android:tag="cbflx"/>
+</LinearLayout>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <View
+            android:id="@+id/v_prop_anchor"
+            android:layout_width="16dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </View>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_property_check" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="承包经营权地块调查工具"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_top_right"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tbUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp"
+                app:srcCompat="@mipmap/ic_user" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:hint="选择行政地域"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ll_top_right"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ime.sii.gis.controls.MapControl
+            android:id="@+id/mapControl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        app:layout_constraintEnd_toStartOf="@+id/scrollView2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ScrollView
+                            android:id="@+id/svToolBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:background="@drawable/bg_shadow"
+                            tools:layout_editor_absoluteX="61dp"
+                            tools:layout_editor_absoluteY="45dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="2dp"
+                                android:orientation="horizontal">
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbPan"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_move_checked"
+                                    app:image_normal="@mipmap/ic_move_normal"
+                                    app:text="移动" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbSingleSelect"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_select_check"
+                                    app:image_normal="@mipmap/ic_select_normal"
+                                    app:text="选择" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbProperty"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_property_check"
+                                    app:image_normal="@mipmap/ic_property_normal"
+                                    app:text="属性" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbCreateFeature"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_paint_checked"
+                                    app:image_normal="@mipmap/ic_paint_normal"
+                                    app:text="绘制" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbModifyFeature"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_node_checked"
+                                    app:image_normal="@mipmap/ic_node_normal"
+                                    app:text="修改" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbCut"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_split_checked"
+                                    app:image_normal="@mipmap/ic_split_normal"
+                                    app:text="分割" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbCutAngle"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_cut_angle_checked"
+                                    app:image_normal="@mipmap/ic_cut_angle"
+                                    app:text="修角" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbAddEdge"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_edge_expand_checked"
+                                    app:image_normal="@mipmap/ic_edge_expand"
+                                    app:text="补地" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbUndo"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_sure_pressed"
+                                    app:image_disable="@mipmap/ic_undo_disable"
+                                    app:image_normal="@mipmap/ic_undo_normal"
+                                    app:text="撤销" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbRedo"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_sure_pressed"
+                                    app:image_disable="@mipmap/ic_redo_disable"
+                                    app:image_normal="@mipmap/ic_redo_normal"
+                                    app:text="重做" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbCommit"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_sure_pressed"
+                                    app:image_disable="@mipmap/ic_save_disable"
+                                    app:image_normal="@mipmap/ic_save_normal"
+                                    app:text="保存" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbCancel"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_cancel_checked"
+                                    app:image_disable="@mipmap/ic_cancel_disable"
+                                    app:image_normal="@mipmap/ic_cancel_normal"
+                                    app:text="取消" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbDelete"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    app:image_check="@mipmap/ic_delete_checked"
+                                    app:image_normal="@mipmap/ic_delete_normal"
+                                    app:text="删除"
+                                    tools:layout_editor_absoluteX="388dp"
+                                    tools:layout_editor_absoluteY="88dp" />
+
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbFullExtent"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="0dp"
+                                    android:paddingRight="0dp"
+                                    android:paddingBottom="3dp"
+
+                                    app:image_check="@mipmap/ic_fullextent_checked"
+                                    app:image_normal="@mipmap/ic_fullextent_normal"
+                                    app:text="全图" />
+                            </LinearLayout>
+                        </ScrollView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/scrollView2"
+                        android:layout_width="68dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbLayer"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:image_check="@mipmap/ic_layer_checked"
+                                    app:image_normal="@mipmap/ic_layer_normal"
+                                    app:text="图层" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbLocate"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="0dp"
+                                    android:paddingRight="0dp"
+                                    android:paddingBottom="3dp"
+                                    app:image_check="@mipmap/ic_locate"
+                                    app:image_normal="@mipmap/ic_locate"
+                                    app:text="定位" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbMeasureLength"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_distance_checked"
+                                    app:image_normal="@mipmap/ic_distance_normal"
+                                    app:text="长度" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbMeasureArea"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_area_checked"
+                                    app:image_normal="@mipmap/ic_area_normal"
+                                    app:text="面积" />
+
+                                <com.sii.datagovenpad.control.ToolButton
+                                    android:id="@+id/tbClearMeasure"
+                                    style="@style/ToolStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:image_check="@mipmap/ic_measure_area_checked"
+                                    app:image_disable="@mipmap/ic_clear_disable"
+                                    app:image_normal="@mipmap/ic_clear_normal"
+                                    app:text="清除" />
+                            </LinearLayout>
+                        </ScrollView>
+
+                        <Button
+                            android:id="@+id/btnSideRight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="《">
+
+                        </Button>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        <ViewFlipper
+            android:id="@+id/side_bar_right_frame"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="visible"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="当前无内容可显示"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </ViewFlipper>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

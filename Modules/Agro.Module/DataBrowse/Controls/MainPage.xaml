@@ -1,0 +1,299 @@
+﻿<UserControl x:Class="Agro.Module.DataBrowse.MainPage"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                               xmlns:wpftk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                               xmlns:local="clr-namespace:Agro.Module.DataBrowse"
+                               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             xmlns:mui="clr-namespace:Agro.GIS.UI;assembly=Agro.LibMap"
+                               d:DesignHeight="480"
+                               d:DesignWidth="1357"
+                               mc:Ignorable="d">
+    <cui:SidebarPage>
+        <cui:SidebarPage.LeftPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                                   Name="title"
+                                   Margin="10,8,10,7"
+                                   FontSize="16"
+                                   TextAlignment="Center"
+                                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                                   Text="汇交数据详细情况"></TextBlock>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Auto"
+                                      PanningMode="VerticalOnly"
+                                      Grid.Row="1"
+                                      Margin="0,0,-1,-1">
+                    <StackPanel Orientation="Vertical">
+                        <!--<cmps:Separator Margin="0"
+                                                Orientation="Horizontal"></cmps:Separator>-->
+                        <Border BorderThickness="0,1,1,0" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+                            <cui:MetroExpander Name="expander1" IsExpanded="False"
+                                                    BorderThickness="0,0,0,0"
+                                                    HeaderBackgroundDefault="{DynamicResource Metro_Window_Style_Background}"
+                                                    HeaderPadding="5"
+                                                    >
+                                <cui:MetroExpander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="权属数据"
+                                                       Margin="0,2,0,0"
+                                                       VerticalAlignment="Center"></TextBlock>
+                                    </StackPanel>
+                                </cui:MetroExpander.Header>
+                                <ListBox Name="listBoxProperty"
+                                         HorizontalContentAlignment="Stretch"
+                                                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                       ScrollViewer.IsDeferredScrollingEnabled="False"
+                                                       SelectionChanged="listBoxProperty_SelectionChanged"
+                                                       >
+                                    <!--<ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="属性结构"
+                                                          Click="MenuItem_Click_1" />
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>-->
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                        <Border  BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}" SnapsToDevicePixels="True">
+                                                <DockPanel ToolTip="{Binding TableName}" Margin="0,4">
+                                                <cui:ImageTextItem Grid.Row="0" DockPanel.Dock="Left"
+                                                                        Grid.RowSpan="2"
+                                                                        Grid.Column="0"
+                                                                        Image="../Resources/Table.png"
+                                                                        ImagePosition="Left"
+                                                                        Margin="6,2"/>
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Grid.Row="0"
+                                                               Grid.Column="1"
+                                                               Margin="2"
+                                                               Text="{Binding AliasName}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"></TextBlock>
+                                                    <DockPanel Grid.Row="1"
+                                                               Grid.Column="1"
+                                                               LastChildFill="False"
+                                                               HorizontalAlignment="Stretch">
+                                                        <TextBlock Margin="2"
+                                                                   DockPanel.Dock="Left"
+                                                                   Foreground="{DynamicResource GlyphBrush}"
+                                                                   Text="{Binding TableName}"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Margin="2,2,5,2"
+                                                                   DockPanel.Dock="Right"
+                                                                   Foreground="{DynamicResource GlyphBrush}"
+                                                                   Text="{Binding FileName}"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Left"></TextBlock>
+                                                    </DockPanel>
+                                                </StackPanel>
+                                            </DockPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </cui:MetroExpander>
+                        </Border>
+                        <!--<cmps:Separator Margin="0,-1,0,0"
+                                                Orientation="Horizontal"></cmps:Separator>-->
+                        <Border BorderThickness="0,1,1,1" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+                            <cui:MetroExpander Name="expander2" IsExpanded="False"
+                                                    BorderThickness="0,1,0,0"
+                                                    HeaderBackgroundDefault="{DynamicResource Metro_Window_Style_Background}"
+                                                    HeaderPadding="5">
+                                <cui:MetroExpander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="矢量数据"
+                                                       Margin="0,2,0,0"
+                                                       VerticalAlignment="Center"></TextBlock>
+                                    </StackPanel>
+                                </cui:MetroExpander.Header>
+                                <ListBox Name="listBoxGeometry"
+                                         HorizontalContentAlignment="Stretch"
+                                                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                       ScrollViewer.IsDeferredScrollingEnabled="False"
+                                                       SelectionChanged="listBoxGeometry_SelectionChanged"
+                                                       >
+                                    <!--<ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="属性结构"
+                                                          Click="MenuItem_Click_2" />
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>-->
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+                                                <Grid ToolTip="{Binding TableName}" Margin="0,4"
+                                                      Background="Transparent">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <cui:ImageTextItem Grid.Row="0"
+                                                                        Grid.RowSpan="2"
+                                                                        Grid.Column="0"
+                                                                        Image="../Resources/Shape.png"
+                                                                        ImagePosition="Left"
+                                                                        Margin="6,2"></cui:ImageTextItem>
+                                                <TextBlock Grid.Row="0"
+                                                               Grid.Column="1"
+                                                               MaxWidth="230"
+                                                               Margin="2"
+                                                               Text="{Binding AliasName}"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"></TextBlock>
+                                                <DockPanel Grid.Row="1"
+                                                               Grid.Column="1"
+                                                               LastChildFill="False">
+                                                    <TextBlock Margin="2"
+                                                                   DockPanel.Dock="Left"
+                                                                   Foreground="{DynamicResource GlyphBrush}"
+                                                                   Text="{Binding FileName}"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Left"></TextBlock>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </cui:MetroExpander>
+                        </Border>
+                        <!--<cmps:Separator Margin="0,-1,0,0"
+                                                Orientation="Horizontal"></cmps:Separator>-->
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </cui:SidebarPage.LeftPanel>
+        <DockPanel>
+            <Border BorderThickness="0,0,0,1" DockPanel.Dock="Top"
+                            BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                            Background="{DynamicResource Metro_Window_Style_Background_Lighter}" >
+                <DockPanel 
+                                   LastChildFill="False">
+                    <!--<Grid Width="0"
+                                  Height="16"
+                                  DockPanel.Dock="Left"
+                                  Margin="4,0"
+                                  VerticalAlignment="Center">
+                    <cui:ImageTextItem Name="imageTitle"
+                                                    Visibility="Collapsed" ></cui:ImageTextItem>
+                    <cmps:LoadingIcon Width="16"
+                                                  Height="16"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Visibility="Collapsed"
+                                                  RenderOptions.BitmapScalingMode="NearestNeighbor"></cmps:LoadingIcon>
+                </Grid>-->
+                    <TextBlock Name="textBlockTitle"
+                                       Margin="0,10"
+                                       Visibility="Collapsed"
+                                       Text="汇交成果路径:"
+                                       VerticalAlignment="Center"></TextBlock>
+                    <cui:ImageTextBox x:Name="txtPath"
+                                                 DockPanel.Dock="Left"
+                                                 Margin="3,2,1,2"
+                                                 Height="30"
+                                                 Width="230"
+                                      IsReadOnly="True"
+                                                 Hint="请选择汇交成果路径"
+                                                 TextChanged="txtPath_TextChanged"
+                                      Image="pack://application:,,,/Agro.Library.Common;component/Resources/Images/16/FileOpen.png"
+                                                 IsEnabled="True"></cui:ImageTextBox>
+                    <Button DockPanel.Dock="Left"
+                                                 Name="btnCatalog"
+                                                 Height="30"
+                                                 Margin="15,0,0,0"
+                                                 Padding="5,0"
+                                                 Style="{DynamicResource Metro_Button_Paneled_Style}"
+                                                 Click="btnCatalog_Click"
+                                                 IsEnabled="True">
+                        <cui:ImageTextItem Image="../Resources/Folder.png"
+                                                 Text="查看目录" Height="20">
+                        </cui:ImageTextItem>
+                    </Button>
+                    <Button DockPanel.Dock="Left"
+                                                 Name="btnAnaly"
+                                                 Height="30"
+                                                 Margin="15,0,0,0"
+                                                 Padding="5,0"
+                                                 Style="{DynamicResource Metro_Button_Paneled_Style}"
+                                                 Click="btnAnaly_Click"
+                                                 IsEnabled="True">
+                        <cui:ImageTextItem Image="../../Resources/Images/16/Analy.png"
+                                                 Text="数据分析" Height="20">
+                        </cui:ImageTextItem>
+                    </Button>
+                    <Button DockPanel.Dock="Left"
+                                                 Name="btnMapView"
+                                                 Height="30"
+                                                 Margin="15,0,0,0"
+                                                 Padding="5,0"
+                                                 Style="{DynamicResource Metro_Button_Paneled_Style}"
+                                                 Click="btnMapView_Click"
+                                                 IsEnabled="True">
+						<cui:ImageTextItem Image="pack://application:,,,/Agro.Library.common;component/Resources/Images/16/Map.png"
+                                                 Text="地图浏览" Height="20">
+                        </cui:ImageTextItem>
+                    </Button>
+                    <cui:ImageTextBox x:Name="txtSearch"
+                                                 DockPanel.Dock="Right"
+                                                 Margin="3,3,3,3"
+                                                 Height="30"
+                                                 Width="156"
+                                                 Hint="请输入查找关键字"
+                                                 Image="../../Resources/Images/16/GroupZoom.png"
+                                                 />
+                    <ComboBox DockPanel.Dock="Right"
+                                                Name="cbFields"
+                                                Margin="5,3,0,3"
+                                                Padding="6, 5, 6, 5"
+                                                Width="185"
+                                                BorderThickness="1"
+                                                Height="30">
+                        <!--<ComboBox.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type data:SearchFieldItemAll}">
+                                <Grid>
+                                    <cui:ImageTextItem VerticalAlignment="Center"
+                                                                ToolTip="{Binding AliasName}"
+                                                                Text="{Binding AliasName}"></cui:ImageTextItem>
+                                </Grid>
+                            </HierarchicalDataTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type data:SearchFieldItem}">
+                                <DockPanel LastChildFill="False"
+                                                   HorizontalAlignment="Stretch">
+                                    <cui:ImageTextItem VerticalAlignment="Center"
+                                                                Text="{Binding Path=AliasName}"
+                                                                ToolTip="{Binding Path=AliasName}"></cui:ImageTextItem>
+                                    <TextBlock DockPanel.Dock="Right"
+                                                       Margin="10,0,10,0"
+                                                       Text="{Binding Type}"
+                                                       Foreground="{DynamicResource Metro_Window_Style_Foreground_Lighter}"></TextBlock>
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                        </ComboBox.Resources>-->
+                    </ComboBox>
+                    <CheckBox Name="checkBoxFuzzy"
+                                      Margin="3,3,3,3"
+                                      VerticalAlignment="Center"
+                                      DockPanel.Dock="Right">全字匹配</CheckBox>
+                </DockPanel>
+            </Border>
+            <Grid>
+                <cui:GridView x:Name="mdbView" Visibility="Collapsed"/>
+                <mui:TableView Name="dbfView"/>
+            </Grid>
+        </DockPanel>
+    </cui:SidebarPage>
+</UserControl>

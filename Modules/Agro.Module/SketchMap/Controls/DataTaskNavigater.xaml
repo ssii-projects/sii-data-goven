@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Agro.Module.SketchMap.DataTaskNavigater"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+           mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="300">
+	<DockPanel>
+		<cui:OptionsContainer Name="ocDat" Header="  数据所在路径" Height="180" DockPanel.Dock="Top">
+			<ListBox Grid.Row="1"
+                           Name="lstView"
+                           BorderThickness="1"
+                           Height="150"
+                           SelectionChanged="lstView_SelectionChanged"
+                           Margin="0,0,0,0"/>
+		</cui:OptionsContainer>
+		<cui:OptionsContainer Name="ocCbf" Header="  承包方信息" Height="180" DockPanel.Dock="Top">
+			<ListBox Grid.Row="3"
+                           Name="lstContractor"
+                           BorderThickness="1"
+                           Height="150"
+                           DisplayMemberPath="CBFMC"
+                           SelectedValuePath="CBFBM"
+                           SelectionChanged="lstContractor_SelectionChanged"
+                           />
+		</cui:OptionsContainer>
+		<cui:OptionsContainer Header="  流转地块信息" Height="50" DockPanel.Dock="Bottom" Visibility="Collapsed" >
+			<TextBox Grid.Row="7" IsReadOnly="True" BorderBrush="Transparent"
+                           Name="lstData"/>
+		</cui:OptionsContainer>
+		<cui:OptionsContainer Name="ocCbdk" Header="  承包地块信息">
+			<ListBox Grid.Row="5"
+                           Name="lstLand"
+                           BorderThickness="1"
+                           DisplayMemberPath="DKBM"
+                           SelectedValuePath="DKBM"
+                           SelectionChanged="lstLand_SelectionChanged"/>
+		</cui:OptionsContainer>
+	</DockPanel>
+    <!--<Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Margin="0,0,0,0"
+                   FontSize="16"
+                   Background="#B4CAB4"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                   Text="  数据所在路径"></TextBlock>
+        <ListBox Grid.Row="1"
+                           Name="lstView"
+                           BorderThickness="1"
+                           Height="150"
+                           SelectionChanged="lstView_SelectionChanged"
+                           Margin="0,0,0,0">
+        </ListBox>
+        <TextBlock Grid.Row="2" Name="labContractor"
+                   Margin="0,0,0,0"
+                   FontSize="16"
+                   Background="#B4CAB4"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                   Text="  承包方信息"></TextBlock>
+        <ListBox Grid.Row="3"
+                           Name="lstContractor"
+                           BorderThickness="1"
+                           Height="150"
+                           DisplayMemberPath="CBFMC"
+                           SelectedValuePath="CBFBM"
+                           SelectionChanged="lstContractor_SelectionChanged"
+                           Margin="0,0,0,0">
+        </ListBox>
+        <TextBlock Grid.Row="4" Name="labLand"
+                   Margin="0,0,0,0"
+                   FontSize="16"
+                   Background="#B4CAB4"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                   Text="  承包地块信息"></TextBlock>
+        <ListBox Grid.Row="5"
+                           Name="lstLand"
+                           BorderThickness="1"
+                           DisplayMemberPath="DKBM"
+                           SelectedValuePath="DKBM"
+                           SelectionChanged="lstLand_SelectionChanged"
+                           Margin="0,0,0,0">
+        </ListBox>
+        <TextBlock Grid.Row="6" Name="labTransLand" Visibility="Collapsed"
+                   Margin="0,0,0,0"
+                   FontSize="16"
+                   Background="#B4CAB4"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"
+                   Text="  流转地块信息"></TextBlock>
+        <TextBox Grid.Row="7" Visibility="Collapsed" IsReadOnly="True" BorderBrush="Transparent"
+                           Name="lstData">
+        </TextBox>
+    </Grid>-->
+</UserControl>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_prop_item_spin"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:text="Label "
+        android:paddingTop="5dp"
+        android:textColor="@color/ziti"
+        android:paddingBottom="5dp"
+        android:gravity="right"
+        android:paddingRight="15dp"
+        android:textSize="15sp"/>
+    <Spinner
+        android:id="@+id/sp_prop_item_spin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textColor="@color/ziti"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:spinnerMode="dialog"
+        />
+    <EditText
+        android:id="@+id/sp_prop_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:text=""
+        android:textColor="@color/colorTextReadOnly"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:theme="@style/MyEditext"
+        />
+</LinearLayout>

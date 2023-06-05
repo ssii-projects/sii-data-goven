@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPanel">
+    <include layout="@layout/form_info_top_bar" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        >-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="图层管理"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginBottom="13dp" />-->
+<!--    </LinearLayout>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/imaginaryline"
+        android:layerType="software" android:visibility="gone"/>
+    <ListView
+        android:id="@+id/tuceng_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:divider="#00000000"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

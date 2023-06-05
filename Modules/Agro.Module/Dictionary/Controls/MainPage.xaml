@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="Agro.Module.Dictionary.MainPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:local="clr-namespace:Agro.Module.Dictionary"
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+                    mc:Ignorable="d"
+                    d:DesignHeight="480"
+                    d:DesignWidth="800">
+    <cui:SidebarPage>
+        <cui:SidebarPage.LeftPanel>
+            <DockPanel>
+                <Border DockPanel.Dock="Top" Margin="0,2,0,0" Background="#B9D3EE"
+                   Height="25">
+                    <TextBlock  DockPanel.Dock="Top"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   
+                   Text="  数据类型"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"></TextBlock>
+                </Border>
+                <Border BorderThickness="0,1,1,0" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+                    <ListBox x:Name="lbTypes" ItemTemplate="{DynamicResource DefaultListBoxItem_ItemTemplate}">
+                        <!--<ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="25">
+                                    <TextBlock Text="{Binding}"  VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>-->
+                    </ListBox>
+                </Border>
+            </DockPanel>
+        </cui:SidebarPage.LeftPanel>
+
+        <ListView        x:Name="lstView"
+                                Margin="0,0,0,20"
+                                BorderThickness="0">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource Metro_ListView_HeaderContainer_Sytle}">
+                    <Setter Property="Height" Value="32"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource Metro_Window_Style_BorderBrush_Default}"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                </Style>
+                <Style x:Key="Header1Style" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource Metro_ListView_HeaderContainer_Sytle}">
+                    <Setter Property="Height" Value="32"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource Metro_ListView_ItemContainer_Sytle}">
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                
+                <GridView>
+                    <GridViewColumn Header=" 名称"
+                                    Width="220">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                    <TextBlock Text="{Binding Mc}"
+                                               Margin="6"
+                                               ToolTip="{Binding Mc}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header=" 编码"
+                                    Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Bm}"
+                                           ToolTip="{Binding Bm}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header=" 说明"
+                                    Width="350">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Bz}"
+                                           ToolTip="{Binding Bz}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </cui:SidebarPage>
+</UserControl>

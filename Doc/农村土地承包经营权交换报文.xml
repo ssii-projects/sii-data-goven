@@ -1,0 +1,355 @@
+<SUBMIT>
+    <HEAD>
+        <FSF>********************************</FSF>
+        <FSSJ>yyyy-MM-dd HH:mm:ss</FSSJ>
+        <SJLX>103</SJLX>
+        <SJBZM>********-****-****-****-************</SJBZM>
+    </HEAD>
+    <BUSINESS_DATA>
+        <XZQDM>******</XZQDM>
+        <XZDYMC>xx县</XZDYMC>
+		<QYWLSH>********************</QYWLSH>
+		<YWLSH>********************</YWLSH>
+        <YWBLSJ>yyyy-MM-dd HH:mm:ss</YWBLSJ>
+        <FBFBM>**************</FBFBM>
+        <CBFBM>******************</CBFBM>
+        <CBHTBM>*******************</CBHTBM>
+        <CBJYQZBM>*******************</CBJYQZBM>
+    </BUSINESS_DATA>
+    <ORIGINAL_DATA>
+        <FBF>
+            <FBFBM>**************</FBFBM>
+            <FBFMC>xx县xxxxxx村村民委员会</FBFMC>
+            <FBFFZRXM>xx</FBFFZRXM>
+            <FZRZJLX>*</FZRZJLX>
+            <FZRZJHM>******************</FZRZJHM>
+            <LXDH>***********</LXDH>
+            <FBFDZ>xx省xxxxxx村村民委员会</FBFDZ>
+            <YZBM>******</YZBM>
+            <FBFDCY />
+            <FBFDCRQ />
+            <FBFDCJS />
+            <CZFS>***</CZFS>
+        </FBF>
+        <CBF>
+            <CBFBM>******************</CBFBM>
+            <CBFLX>*</CBFLX>
+            <CBFMC>xxx</CBFMC>
+            <CBFZJLX>*</CBFZJLX>
+            <CBFZJHM>******************</CBFZJHM>
+            <CBFDZ>xx省xxxxxxxxx村xxx组</CBFDZ>
+            <YZBM>******</YZBM>
+            <LXDH />
+            <CBFCYSL>*</CBFCYSL>
+            <CBFDCRQ />
+            <CBFDCY />
+            <CBFDCJS></CBFDCJS>
+            <GSJS />
+            <GSJSR />
+            <GSSHRQ />
+            <GSSHR />
+            <CZFS>***</CZFS>
+        </CBF>
+        <JTCY>
+            <CBFBM>******************</CBFBM>
+            <CYXM>xxx</CYXM>
+            <CYXB>*</CYXB>
+            <CYZJLX>*</CYZJLX>
+            <CYZJHM>******************</CYZJHM>
+            <YHZGX>**</YHZGX>
+            <CYBZ />
+            <SFGYR>*</SFGYR>
+            <CYBZSM></CYBZSM>
+            <CZFS>***</CZFS>
+        </JTCY>
+        <CBHT >
+		    <CBHTBM>*******************</CBHTBM>
+            <YCBHTBM />
+            <FBFBM>**************</FBFBM>
+            <CBFBM>******************</CBFBM>
+            <CBFS>***</CBFS>
+            <CBQXQ>yyyy-MM-dd HH:mm:ss</CBQXQ>
+            <CBQXZ>yyyy-MM-dd HH:mm:ss</CBQXZ>
+            <HTZMJ>*****.**</HTZMJ>
+            <CBDKZS>*</CBDKZS>
+            <QDSJ>yyyy-MM-dd HH:mm:ss</QDSJ>
+            <HTZMJM>**.**</HTZMJM>
+            <YHTZMJ>**.**</YHTZMJ>
+            <YHTZMJM>**.**</YHTZMJM>
+            <CZFS>***</CZFS>
+        </CBHT>
+        <CBJYQZDJB>
+		    <CBJYQZBM>*******************</CBJYQZBM>
+            <FBFBM>**************</FBFBM>
+            <CBFBM>******************</CBFBM>
+            <CBFS>***</CBFS>
+            <CBQX>**</CBQX>
+            <CBQXQ>yyyy-MM-dd HH:mm:ss</CBQXQ>
+            <CBQXZ>yyyy-MM-dd HH:mm:ss</CBQXZ>
+            <CBJYQZLSH>***************</CBJYQZLSH>
+            <DJBFJ>******</DJBFJ>
+            <YCBJYQZBH>******</YCBJYQZBH>
+            <DBR>xxx</DBR>
+            <DJSJ>yyyy-MM-dd HH:mm:ss</DJSJ>
+            <CZFS>***</CZFS>
+        </CBJYQZDJB>
+        <CBJYQZ>
+		    <CBJYQZBM>*******************</CBJYQZBM>
+            <FZJG>xxxxxx</FZJG>
+            <FZRQ>yyyy-MM-dd HH:mm:ss</FZRQ>
+            <QZSFLQ>*</QZSFLQ>
+            <QZLQRQ>yyyy-MM-dd HH:mm:ss</QZLQRQ>
+            <QZLQRXM>xxx</QZLQRXM>
+            <QZLQRZJLX>*</QZLQRZJLX>
+            <QZLQRZJHM>******************</QZLQRZJHM>
+            <CZFS>***</CZFS>
+        </CBJYQZ>
+        <CBDK>
+          <DK>
+		    <BSM>**********</BSM>
+			<YSDM>******</YSDM>
+			<DKBM>*******************</DKBM>
+			<DKMC>**********</DKMC>
+			<SYQXZ>**</SYQXZ>
+			<DKLB>**</DKLB>
+			<TDLYLX>**</TDLYLX>
+			<DLDJ>**</DLDJ>
+			<TDYT>**********</TDYT>
+			<SFJBNT>*</SFJBNT>
+			<SCMJ>**.**</SCMJ>
+			<DKDZ>******</DKDZ>
+			<DKXZ>******</DKXZ>
+			<DKNZ>******</DKNZ>
+			<DKBZ>******</DKBZ>
+			<DKBZXX>**********</DKBZXX>
+			<ZJRXM>***</ZJRXM>
+			<KJZB>***********</KJZB>
+			<SCMJM>**.**</SCMJM>
+         </DK>
+        <CZFS>***</CZFS>
+        <YCBDKBM></YCBDKBM>
+        <YCBFBM />
+        <SHP>*********************************************************</SHP>
+        </CBDK>
+        <CBDKXX>
+		    <DKBM>*******************</DKBM>
+			<FBFBM>**************</FBFBM>
+			<CBFBM>******************</CBFBM>
+			<CBJYQQDFS>***</CBJYQQDFS>
+			<HTMJ>**.**</HTMJ>
+			<CBHTBM>*******************</CBHTBM>
+			<LZHTBM>******************</LZHTBM>
+			<CBJYQZBM>*******************</CBJYQZBM>
+			<YHTMJ>***************</YHTMJ>
+			<HTMJM>***************</HTMJM>
+			<YHTMJM>***************</YHTMJM>
+			<SFQQQG>*</SFQQQG>
+        </CBDKXX>
+        <DKJZD>
+            <JZD>
+                <BSM>*******</BSM>
+        		<YSDM>******</YSDM>
+        		<JZDH>******</JZDH>
+        		<JZDLX>*</JZDLX>
+        		<JBLX>*</JBLX>
+        		<DKBM>*******************</DKBM>
+        		<XZBZ>******.**</XZBZ>
+        		<YZBZ>*******.**</YZBZ>
+                <SHP/ >
+            </JZD>
+        </CBJZD>
+        <DKJZX>
+            <JZX>
+    		    <BSM>*******</BSM>
+                <YSDM>******</YSDM>
+                <JXXZ>******</JXXZ>
+                <JZXLB>**</JZXLB>
+                <JZXWZ>*</JZXWZ>
+                <JZXSM>xxxxxxxxxxxxxxx</JZXSM>
+                <PLDWQLR>xxx</PLDWQLR>
+                <PLDWZJR>xxx</PLDWZJR>
+                <JZXH>******</JZXH>
+                <QJZDH>******</QJZDH>
+                <ZJZDH>******</ZJZDH>
+                <DKBM>*******************</DKBM>
+                <SHP>*********************************</SHP>
+            </JZX>
+        </DKJZX>
+        <TYZB>*********************************************************</TYZB>
+    </ORIGINAL_DATA>
+    <CHANGE_DATA>
+        <FBF>
+            <FBFBM>**************</FBFBM>
+            <FBFMC>xx县xxxxxx村村民委员会</FBFMC>
+            <FBFFZRXM>xx</FBFFZRXM>
+            <FZRZJLX>*</FZRZJLX>
+            <FZRZJHM>******************</FZRZJHM>
+            <LXDH>***********</LXDH>
+            <FBFDZ>xx省xxxxxx村村民委员会</FBFDZ>
+            <YZBM>******</YZBM>
+			<FBFDCY>******</FBFDCY>
+			<FBFDCRQ>yyyy-MM-dd</FBFDCRQ>
+			<FBFDCJS>********</FBFDCJS>
+            <CZFS>***</CZFS>
+        </FBF>
+        <CBF>
+            <CBFBM>******************</CBFBM>
+            <CBFLX>*</CBFLX>
+            <CBFMC>xxx</CBFMC>
+            <CBFZJLX>*</CBFZJLX>
+            <CBFZJHM>******************</CBFZJHM>
+            <CBFDZ>xx省xxxxxxxxx村xxx组</CBFDZ>
+            <YZBM>******</YZBM>
+            <LXDH />
+            <CBFCYSL>*</CBFCYSL>
+            <CBFDCRQ />
+            <CBFDCY />
+            <CBFDCJS></CBFDCJS>
+            <GSJS />
+            <GSJSR />
+            <GSSHRQ />
+            <GSSHR />
+            <CZFS>***</CZFS>
+        </CBF>
+        <CBHT>
+            <CBHTBM>*******************</CBHTBM>
+            <YCBHTBM />
+            <FBFBM>**************</FBFBM>
+            <CBFBM>******************</CBFBM>
+            <CBFS>***</CBFS>
+            <CBQXQ>yyyy-MM-dd HH:mm:ss</CBQXQ>
+            <CBQXZ>yyyy-MM-dd HH:mm:ss</CBQXZ>
+            <HTZMJ>*****.**</HTZMJ>
+            <CBDKZS>*</CBDKZS>
+            <QDSJ>yyyy-MM-dd HH:mm:ss</QDSJ>
+            <HTZMJM>**.**</HTZMJM>
+            <YHTZMJ>**.**</YHTZMJ>
+            <YHTZMJM>**.**</YHTZMJM>
+            <CZFS>***</CZFS>
+        </CBHT>
+        <CBJYQZDJB>
+            <CBJYQZBM>*******************</CBJYQZBM>
+            <FBFBM>**************</FBFBM>
+            <CBFBM>******************</CBFBM>
+            <CBFS>***</CBFS>
+            <CBQX>**</CBQX>
+            <CBQXQ>yyyy-MM-dd HH:mm:ss</CBQXQ>
+            <CBQXZ>yyyy-MM-dd HH:mm:ss</CBQXZ>
+            <CBJYQZLSH>***************</CBJYQZLSH>
+            <DJBFJ>******</DJBFJ>
+            <YCBJYQZBH>******</YCBJYQZBH>
+            <DBR>xxx</DBR>
+            <DJSJ>yyyy-MM-dd HH:mm:ss</DJSJ>
+            <CZFS>***</CZFS>
+        </CBJYQZDJB>
+        <CBJYQZ>
+            <CBJYQZBM>*******************</CBJYQZBM>
+            <FZJG>xxxxxx</FZJG>
+            <FZRQ>yyyy-MM-dd HH:mm:ss</FZRQ>
+            <QZSFLQ>*</QZSFLQ>
+            <QZLQRQ>yyyy-MM-dd HH:mm:ss</QZLQRQ>
+            <QZLQRXM>xxx</QZLQRXM>
+            <QZLQRZJLX>*</QZLQRZJLX>
+            <QZLQRZJHM>******************</QZLQRZJHM>
+            <CZFS>***</CZFS>
+        </CBJYQZ>
+        <CBDK>
+          <DK>
+            <BSM>**********</BSM>
+            <YSDM>******</YSDM>
+            <DKBM>*******************</DKBM>
+            <DKMC>**********</DKMC>
+            <SYQXZ>**</SYQXZ>
+            <DKLB>**</DKLB>
+            <TDLYLX>**</TDLYLX>
+            <DLDJ>**</DLDJ>
+            <TDYT>**********</TDYT>
+            <SFJBNT>*</SFJBNT>
+            <SCMJ>**.**</SCMJ>
+            <DKDZ>******</DKDZ>
+            <DKXZ>******</DKXZ>
+            <DKNZ>******</DKNZ>
+            <DKBZ>******</DKBZ>
+            <DKBZXX>**********</DKBZXX>
+            <ZJRXM>***</ZJRXM>
+            <KJZB>***********</KJZB>
+            <SCMJM>**.**</SCMJM>
+         </DK>
+         <CZFS>***</CZFS>
+         <YCBDKBM></YCBDKBM>
+         <YCBFBM />
+         <SHP>*********************************************************</SHP>
+        </CBDK>
+        <CBDKXX>
+            <DKBM>*******************</DKBM>
+            <FBFBM>**************</FBFBM>
+            <CBFBM>******************</CBFBM>
+            <CBJYQQDFS>***</CBJYQQDFS>
+            <HTMJ>**.**</HTMJ>
+            <CBHTBM>*******************</CBHTBM>
+            <LZHTBM>******************</LZHTBM>
+            <CBJYQZBM>*******************</CBJYQZBM>
+            <YHTMJ>***************</YHTMJ>
+            <HTMJM>***************</HTMJM>
+            <YHTMJM>***************</YHTMJM>
+            <SFQQQG>*</SFQQQG>
+        </CBDKXX>
+        <DKJZD>
+            <JZD>
+                <BSM>*******</BSM>
+                <YSDM>******</YSDM>
+                <JZDH>******</JZDH>
+                <JZDLX>*</JZDLX>
+                <JBLX>*</JBLX>
+                <DKBM>*******************</DKBM>
+                <XZBZ>******.**</XZBZ>
+                <YZBZ>*******.**</YZBZ>
+                <SHP/ >
+            </JZD>
+            <JZD>
+                <BSM>*******</BSM>
+                <YSDM>******</YSDM>
+                <JZDH>******</JZDH>
+                <JZDLX>*</JZDLX>
+                <JBLX>*</JBLX>
+                <DKBM>*******************</DKBM>
+                <XZBZ>******.**</XZBZ>
+                <YZBZ>*******.**</YZBZ>
+                <SHP/ >
+            </JZD>
+        </CBJZD>
+        <DKJZX>
+            <JZX>
+                <BSM>*******</BSM>
+                <YSDM>******</YSDM>
+                <JXXZ>******</JXXZ>
+                <JZXLB>**</JZXLB>
+                <JZXWZ>*</JZXWZ>
+                <JZXSM>xxxxxxxxxxxxxxx</JZXSM>
+                <PLDWQLR>xxx</PLDWQLR>
+                <PLDWZJR>xxx</PLDWZJR>
+                <JZXH>******</JZXH>
+                <QJZDH>******</QJZDH>
+                <ZJZDH>******</ZJZDH>
+                <DKBM>*******************</DKBM>
+                <SHP>*********************************</SHP>
+            </JZX>
+            <JZX>
+                <BSM>*******</BSM>
+                <YSDM>******</YSDM>
+                <JXXZ>******</JXXZ>
+                <JZXLB>**</JZXLB>
+                <JZXWZ>*</JZXWZ>
+                <JZXSM>xxxxxxxxxxxxxxx</JZXSM>
+                <PLDWQLR>xxx</PLDWQLR>
+                <PLDWZJR>xxx</PLDWZJR>
+                <JZXH>******</JZXH>
+                <QJZDH>******</QJZDH>
+                <ZJZDH>******</ZJZDH>
+                <DKBM>*******************</DKBM>
+                <SHP>*********************************</SHP>
+            </JZX>
+        </DKJZX>
+        <TYZB>*********************************************************</TYZB>
+    </CHANGE_DATA>
+</SUBMIT>

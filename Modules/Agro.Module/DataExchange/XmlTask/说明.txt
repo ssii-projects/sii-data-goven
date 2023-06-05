@@ -1,0 +1,36 @@
+SELECT TOP (1000) [ID]
+      ,[DJBID]
+      ,[YDJBID]
+      ,[CBHTBM]：受让方的
+      ,[LZHTBM]：
+      ,[CBFBM]：转让方的
+      ,[SRFBM]：受让方的承包方编码
+      ,[LZFS]：承包经营权取得方式
+      ,[LZQX]：
+      ,[LZQXKSRQ]
+      ,[LZQXJSRQ]
+      ,[LZMJ]
+      ,[LZMJM]
+      ,[LZDKS]：流转地块数
+      ,[LZQTDYT]：流转前土地用途
+      ,[LZHTDYT]：流转后土地用途
+      ,[LZJGSM]：流转价格说明
+      ,[HTQDRQ]：合同签订日期
+      ,[SZDY]：
+      ,[CJYH]：创建用户
+      ,[CJSJ]：创建时间
+      ,[ZHXGYH]：最后修改用户
+      ,[ZHXGSJ]：最后修改时间
+  FROM [agriegov_540302].[dbo].[DJ_CBJYQ_LZHT]
+
+  SELECT TOP (1000) [ID]
+      ,[DJBID]
+      ,[YDJBID]
+      ,[DJBBM]：受让方登记簿的CBJYQZBM
+      ,[HTID]:DJ_CBJYQ_LZHT.ID
+      ,[HTBM]:DJ_CBJYQ_LZHT.LZHTBM
+      ,[DKID]
+      ,[DKBM]
+      ,[DKMJ]
+      ,[DKMJM]
+  FROM [agriegov_540302].[dbo].[DJ_CBJYQ_LZDK]

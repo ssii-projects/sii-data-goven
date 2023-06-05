@@ -1,0 +1,84 @@
+﻿<cui:TaskPropertyPage x:Class="Agro.Module.DataExchange.DataImportDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+		<Style x:Key="LeftTextBoxStyle" TargetType="TextBlock">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="DockPanelStyle1" TargetType="DockPanel">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="Margin" Value="4,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel >
+        <!--<DockPanel DockPanel.Dock="Bottom">
+            <TextBlock Name="tbInfo"  DockPanel.Dock="Left"/>
+            <TextBlock Name="tbSaveCount"  DockPanel.Dock="Left"/>
+            <TextBlock Name="tbProgress" Visibility="Visible"></TextBlock>
+        </DockPanel>-->
+        <cui:OptionsContainer Name="ocBasePrm" Header="基本参数" DockPanel.Dock="Top">
+            <!--<DockPanel Margin="2" >-->
+                <DockPanel Style="{StaticResource DockPanelStyle1}">
+                    <TextBlock Name="textBlock" Text="汇交成果数据路径:" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+                    <cui:ImageTextBox Name="tbPath" Margin="4,0"  Image="pack://application:,,,/Agro.Library.Common;component/Resources/Images/16/FileOpen.png" IsReadOnly="True"/>
+                    <!--<Button Name="btnBrowse" Content=" ... " DockPanel.Dock="Right" Style="{DynamicResource Metro_Button_Paneled_Style}"/>
+                <TextBox Name="tbPath" Style="{StaticResource TextBoxStyle1}"/>-->
+                </DockPanel>
+                <!--<DockPanel>
+                    <CheckBox Name="btnClearOldData" Content="清空原有数据" Margin="22,5,0,0" IsChecked="True" Visibility="Collapsed"/>
+                </DockPanel>-->
+                <!--<DockPanel Style="{StaticResource DockPanelStyle1}" Visibility="Collapsed">
+                    <TextBlock Text="采伐项目数据库路径:" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+                    <Button Name="btnXbFileName" Content=" ... " DockPanel.Dock="Right" Style="{DynamicResource Metro_Button_Paneled_Style}"/>
+                    <TextBox Name="tbXbFileName" Style="{StaticResource TextBoxStyle1}"/>
+                </DockPanel>
+                <DockPanel Style="{StaticResource DockPanelStyle1}" Visibility="Collapsed">
+                    <TextBlock Text="外业调查数据库路径:" Style="{StaticResource LeftTextBoxStyle}" DockPanel.Dock="Left"/>
+                    <Button Name="btnWydcDBFileName" Content=" ... " DockPanel.Dock="Right" Style="{DynamicResource Metro_Button_Paneled_Style}"/>
+                    <TextBox Name="tbWydcDBFileName" Style="{StaticResource TextBoxStyle1}"/>
+                </DockPanel>-->
+            <!--</DockPanel>-->
+        </cui:OptionsContainer>
+        <Border Background="{DynamicResource Metro_Window_Style_Background}"
+                DockPanel.Dock="Top"
+                Margin="0,0,0,0">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="0,0,0,0">
+                    <Button Name="btnSelectAll" Content="全选" Click="Btn_Click"/>
+                    <Button Name="btnNotSelectAll" Content="全不选" Click="Btn_Click"/>
+                    <Button Name="btnXorSelect" Content="反选" Click="Btn_Click"/>
+                </StackPanel>
+                <TextBlock Foreground="{DynamicResource GlyphBrush}"
+                       FontWeight="Bold" VerticalAlignment="Center"
+                           Margin="5,0"
+                       Text="导入选项"/>
+            </DockPanel>
+        </Border>
+        <ListBox Name="lstBox"  VerticalAlignment="Stretch" Margin="10,0,0,0" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Height="32" HorizontalAlignment="Stretch" LastChildFill="True">
+                        <CheckBox IsChecked="{Binding Path=IsSelected}" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        <Image Margin="4,0" DockPanel.Dock="Left" Source="{Binding Path=Icon}" Stretch="None"/>
+                        <!--<TextBlock DockPanel.Dock="Right"
+                                               Margin="10,0,10,0" VerticalAlignment="Center"
+                                               Text="{Binding ParentText}"
+                                               Foreground="{DynamicResource Metro_Window_Style_Foreground_Lighter}"></TextBlock>-->
+                        <TextBlock Text="{Binding Path=LayerName}" VerticalAlignment="Center" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+</cui:TaskPropertyPage>

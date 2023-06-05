@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 表单信息顶部工具栏 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="48dp"
+	android:layout_alignParentTop="true"
+	android:background="@drawable/topbar_bkgnd"
+	android:tag="tagTopBar">
+
+	<!-- 左边的返回按钮 -->
+
+	<ImageView
+		android:id="@+id/form_info_top_bar_btn_return"
+		android:layout_width="wrap_content"
+		android:layout_height="46dp"
+		android:background="@drawable/transparent_bkgnd"
+		android:drawableLeft="@drawable/return_arrow"
+		android:src="@drawable/left_return" />
+
+<!--	<ImageView-->
+<!--		android:id="@+id/form_info_top_bar_right"-->
+<!--		android:layout_width="wrap_content"-->
+<!--		android:layout_height="wrap_content"-->
+<!--		android:layout_marginRight="10dp" />-->
+
+	<!--  
+	<ImageView 
+	    android:id="@+id/form_info_delete"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/delete_form"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:layout_marginRight="20dp"
+	    />
+		 -->
+
+	<!-- 中间的标题 -->
+
+	<TextView
+		android:id="@+id/form_into_top_bar_title"
+		style="@style/textstyleShadow"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:gravity="center_vertical"
+		android:text="title"
+		android:textSize="@dimen/top_bar_text_size" />
+
+	<!-- 右边的保存按钮-->
+	<Button
+		android:id="@+id/form_info_top_bar_btn_save"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:background="@drawable/btn_bottom_confirm_bg"
+		android:layout_margin="5dp"
+		android:text="保存"
+		android:textColor="@color/colorAccent"
+		android:visibility="gone" />
+
+
+	<!-- 右边的 -->
+</LinearLayout>
+

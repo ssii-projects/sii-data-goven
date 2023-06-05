@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/form_info_top_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:id="@+id/cbf_jtcy_prop_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.sii.datagovenpad.control.PropItemText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="成员姓名"
+                android:tag="cyxm"
+                />
+            <com.sii.datagovenpad.control.PropItemSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="证件类型"
+                android:tag="cyzjlx"
+                />
+            <com.sii.datagovenpad.control.PropItemText
+                android:id="@+id/tb_cbf_jtcy_prop_zjhm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="证件号码"
+                android:tag="cyzjhm"
+                />
+
+            <com.sii.datagovenpad.control.PropItemDate
+                android:id="@+id/tb_cbf_jtcy_prop_csrq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="出生日期"
+                android:tag="csrq"
+                />
+            <com.sii.datagovenpad.control.PropItemSpinner
+                android:id="@+id/tb_cbf_jtcy_prop_cyxb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="成员性别"
+                android:tag="cyxb"
+                />
+            <com.sii.datagovenpad.control.PropItemSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="与户主关系"
+                android:tag="yhzgx"
+                />
+            <com.sii.datagovenpad.control.PropItemSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="是否共有人"
+                android:tag="sfgyr"
+                />
+            <com.sii.datagovenpad.control.PropItemSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="成员备注"
+                android:tag="cybz"
+                />
+            <com.sii.datagovenpad.control.PropItemText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="成员备注说明"
+                android:tag="cybzsm"
+                >
+
+            </com.sii.datagovenpad.control.PropItemText>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

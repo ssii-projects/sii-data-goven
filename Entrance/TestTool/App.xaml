@@ -1,0 +1,24 @@
+﻿<Application x:Class="TestTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TestTool"
+             StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Agro.LibCore;component/UI/Themes/generic.xaml"/>
+				<!--<ResourceDictionary Source="/Agro.LibMap;component/Themes/DefaultStyle.xaml"/>-->
+				<!--<ResourceDictionary Source="/Agro.Library.Common;component/Themes/DefaultStyle.xaml"/>-->
+			</ResourceDictionary.MergedDictionaries>
+			<Style TargetType="Button" BasedOn="{StaticResource Metro_Button_Style}"/>
+			<Style TargetType="RepeatButton" BasedOn="{StaticResource Metro_RepeatButton_Style}"/>
+			<Style TargetType="ToggleButton" BasedOn="{StaticResource Metro_ToggleButton_Style}"/>
+			<Style TargetType="ListBox" BasedOn="{StaticResource Metro_ListBox_Style}"/>
+			<Style TargetType="ListView" BasedOn="{StaticResource Metro_ListView_Style}"/>
+			<Style TargetType="CheckBox" BasedOn="{StaticResource Metro_CheckBox_Style}"/>
+			<Style TargetType="TextBox" BasedOn="{StaticResource Metro_TextBox_Style}"/>
+			<Style TargetType="ComboBox" BasedOn="{StaticResource Metro_ComboBox_Style}"/>
+			<Style TargetType="ScrollBar" BasedOn="{StaticResource Metro_ScrollBar_Stryle}"/>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

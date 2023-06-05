@@ -1,0 +1,158 @@
+﻿<cui:TaskPropertyPage x:Class="Agro.Module.SketchMap.DataSelectedDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Agro.Module.SketchMap"
+			 xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style x:Key="LeftTextBoxStyle" TargetType="TextBlock" >
+			<Setter Property="Width" Value="120"/>
+			<Setter Property="TextAlignment" Value="Right"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="DockPanelStyle1" TargetType="DockPanel">
+			<Setter Property="Margin" Value="2"/>
+		</Style>
+		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
+			<Setter Property="Margin" Value="4,0"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+		<Color x:Key="Caption2_Background_Color"
+           A="255"
+           R="241"
+           G="241"
+           B="241"></Color>
+		<SolidColorBrush x:Key="Caption2_Background"   Color="{StaticResource Caption2_Background_Color}"/>
+		<Style x:Key="tbCaptain1Style" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Margin" Value="0,10,0,5"/>
+			<Setter Property="Padding" Value="5,2,2,2"/>
+			<Setter Property="Background" Value="{StaticResource Caption2_Background}"/>
+		</Style>
+	</UserControl.Resources>
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<Grid Background="{DynamicResource Metro_Window_Style_Background_Content}" Margin="5,0,5,0"
+          ClipToBounds="True">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Border Grid.Row="1"
+                Visibility="{Binding IsBusy, Converter={StaticResource NotBoolToVisibilityConverter}}"
+                Padding="0">
+				<StackPanel>
+					<DockPanel Style="{StaticResource DockPanelStyle1}" Margin="0, 15, 5, 0">
+						<TextBlock DockPanel.Dock="Left"
+                               Margin="5"
+                               Width="90"
+                               VerticalAlignment="Center"
+                               Text="数据所在路径："></TextBlock>
+						<!--<cui:FolderBrowserTextBox Name="txtFolderPath" Width="385" IsReadOnly="True" TextChanged="txtFilePath_TextChanged"  Visibility="Collapsed"></cui:FolderBrowserTextBox>-->
+						<!--<cui:FileBrowserTextBox Name="txtFilePath" IsReadOnly="True" Multiselect="True" TextChanged="txtFilePath_TextChanged"></cui:FileBrowserTextBox>-->
+						<ComboBox Name="cmbDataSource">
+							<ComboBoxItem Name="cbiDatFile" Content="按dat文件选择..." PreviewMouseLeftButtonUp="ComboBoxItem_PreviewMouseLeftButtonUp"/>
+							<ComboBoxItem Name="cbiCbf" Content="按承包方选择..." PreviewMouseLeftButtonUp="ComboBoxItem_PreviewMouseLeftButtonUp"/>
+						</ComboBox>
+					</DockPanel>
+					<DockPanel Name="dkcFile" Style="{StaticResource DockPanelStyle1}" Visibility="Collapsed">
+						<ListBox Name="lstBox" Height="80" Margin="5,10,3,0" BorderThickness="1" 
+                                       BorderBrush="LightGray"></ListBox>
+					</DockPanel>
+					<DockPanel Style="{StaticResource DockPanelStyle1}" Margin="0, 15, 5, 0">
+						<TextBlock DockPanel.Dock="Left" x:Name="labSavePath"
+                               Margin="5,0,5,0"
+                               Width="90"
+                               VerticalAlignment="Center"
+                               Text="数据保存路径："></TextBlock>
+						<!--<skp:ZoneSelectorCrumbBarTextBox x:Name="zone" Width="385" IsReadOnly="True" DistrictChanged="zone_DistrictChanged" Visibility="Collapsed"></skp:ZoneSelectorCrumbBarTextBox>-->
+						<cui:FolderBrowserTextBox Name="txtOutputFilePath" IsReadOnly="True" TextChanged="txtOutputFilePath_TextChanged"></cui:FolderBrowserTextBox>
+					</DockPanel>
+					<DockPanel Margin="0, 15, 0, 10" Style="{StaticResource DockPanelStyle1}">
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="90"
+                                   Margin="5"
+                                   VerticalAlignment="Center"
+                                   Text="制     图     者："></TextBlock>
+						<TextBox Name="txtDrawPerson"
+                                   Height="28"
+                                   Width="150"
+                                   Margin="0,0,10,0"
+                                   Padding="6,4,6,5">
+						</TextBox>
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="62"
+                                   VerticalAlignment="Center"
+                                   Text="制图日期：" Margin="0,6"></TextBlock>
+						<DatePicker Name="dtpDrawTime" Margin="0,0,5,0" VerticalContentAlignment="Center"/>
+					</DockPanel>
+					<DockPanel Margin="0, 5, 0, 0" Style="{StaticResource DockPanelStyle1}">
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="90"
+                                   Margin="5"
+                                   VerticalAlignment="Center"
+                                   Text="审     核     者："></TextBlock>
+						<TextBox Name="txtCheckPerson"
+                                   Height="28"
+                                   Width="150"
+                                   Margin="0,0,10,0"
+                                   Padding="6,4,6,5">
+						</TextBox>
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="63"
+                                   VerticalAlignment="Center"
+                                   Text="审核日期：" Margin="0,6"></TextBlock>
+						<DatePicker Name="dtpCheckTime" Margin="0,0,5,0" VerticalContentAlignment="Center"/>
+					</DockPanel>
+					<DockPanel Margin="0, 15, 0, 0" Style="{StaticResource DockPanelStyle1}">
+						<TextBlock DockPanel.Dock="Left"
+                                   Width="90"
+                               Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Text="编   制  单  位："></TextBlock>
+						<TextBox Name="txtCompany"
+                                   Height="28"
+                                   Margin="5,0,5,0"
+                                   Padding="6,4,0,5">
+						</TextBox>
+					</DockPanel>
+					<DockPanel Margin="0, 15, 0, 0" Style="{StaticResource DockPanelStyle1}">
+						<CheckBox DockPanel.Dock="Left" VerticalAlignment="Center" IsChecked="True" Margin="5" Width="80"
+                          Content="填写四至" x:Name="chkNeighbor"/>
+						<CheckBox DockPanel.Dock="Left" Margin="10,0,0,0" VerticalAlignment="Center" IsChecked="False" Width="120"
+                          Content="保存Word格式" x:Name="chkWord"/>
+						<CheckBox DockPanel.Dock="Left" Margin="40,0,0,0" VerticalAlignment="Center" IsChecked="False" Width="100"
+                          Content="保存Pdf格式" x:Name="chkPdf"/>
+						<CheckBox DockPanel.Dock="Left" Margin="30,0,0,0" VerticalAlignment="Center" IsChecked="True" Width="100"
+                          Content="保存Jpg格式" x:Name="chkJpg"/>
+						<CheckBox DockPanel.Dock="Left" Margin="10,0,0,0" VerticalAlignment="Center" IsChecked="False" Visibility="Collapsed"
+                          Content="覆盖已有数据" x:Name="chkConver"/>
+					</DockPanel>
+				</StackPanel>
+			</Border>
+			<Border Grid.Row="2"
+                Margin="0,0,10,0"
+                BorderThickness="0,1,0,0"
+                SnapsToDevicePixels="True"
+                BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"
+                Visibility="{Binding IsBusy, Converter={StaticResource NotBoolToVisibilityHiddenConverter}}">
+			</Border>
+			<DockPanel Grid.Row="3"
+                   Margin="5,5" 
+                   LastChildFill="False"
+                   Visibility="Collapsed">
+				<TextBlock DockPanel.Dock="Left"
+                       Width="90"
+                       VerticalAlignment="Center"
+                       Text="地   图  类  型："></TextBlock>
+				<ComboBox Name="cmbType" Margin="5,0,0,0" Width="120" SelectionChanged="cmbType_SelectionChanged"></ComboBox>
+
+			</DockPanel>
+		</Grid>
+	</ScrollViewer>
+</cui:TaskPropertyPage>

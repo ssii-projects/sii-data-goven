@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="Agro.Module.Map.MapPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+            xmlns:kui="clr-namespace:Agro.GIS.UI;assembly=Agro.LibMap"
+            xmlns:m="clr-namespace:Agro.GIS;assembly=Agro.LibMap"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1100">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>-->
+        <Style TargetType="TextBlock" x:Key="rbGroupHeaderStyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}"/>
+            <Setter Property="DockPanel.Dock" Value="Bottom"/>
+        </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel Background="{DynamicResource Metro_Window_Style_Background_Content}">
+        <Border Name="toolbar" DockPanel.Dock="Top" SnapsToDevicePixels="True"
+                       BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}"  BorderThickness="0,0,0,1">
+            <cui:TwoButtonScrollViewer FontSize="12">
+                <StackPanel  Orientation="Horizontal" Margin="0,2">
+                    <cui:RibbonGroupContainer Header="视图">
+                        <cui:ImageToggleButton Name="btnZone" 
+                                               Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/region.png"
+                                               Header="地域" />
+
+                        <!--<Border Style="{DynamicResource Metro_SeparatorV_Style}"/>-->
+                        <cui:ImageToggleButton Name="btnLayer" Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/Layers.png" 
+                                               Header="图层"/>
+                        <!--<cui:ImageToggleButton Header="图层" Name="btnLayer"
+                                                      Image="Resources/Images/32/SmartArt.png" />-->
+                        <cui:ImageToggleButton Name="btnLayerSelection"
+                            Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/layer_selectable.png"
+                                               Header="可选图层" ToolTip="设置地图中哪些图层中的要素可以被选择"/>
+                        <cui:ImageToggleButton  Name="btnMapSheet"
+                                                ToolTip="按国家分幅标准的图幅进行导航" Image="../Resources/Images/32/mapsheet.png" Header="图幅"/>
+						<cui:ImageToggleButton  Name="btnSearch"
+                                                ToolTip="显示查找界面" Image="pack://application:,,,/Agro.LibCore;component/UI/Resources/Images/32/search.png" Header="查找"/>
+						<cui:ImageToggleButton Name="btnDataQuery" 
+                                               Image="../Resources/Images/32/DataQuery.png"
+                                               Header="数据查询" />
+						<cui:ImageToggleButton Header="拓扑" Name="btnTopoCheck"
+                                                      Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/ControlWizards.png" Visibility="Collapsed"/>
+                    </cui:RibbonGroupContainer>
+                  
+                    <DockPanel Visibility="Collapsed">
+                        <TextBlock Text="编辑" Style="{StaticResource rbGroupHeaderStyle}"/>
+                        <cui:ImageToggleButton Header="编辑" Name="btnEdit" 
+                                                      Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/InkingStart.png"/>
+                        <kui:ModifyFeatureToolButton/>
+                        <kui:CreateFeatureToolButton/>
+                        <kui:AutoCompletePolygonToolButton/>
+                        <kui:CutFeatureToolButton/>
+                        <kui:MergeFeatureToolButton/>
+                        <kui:MapEditUndoCommand/>
+                        <kui:MapEditRedoCommand/>
+                    </DockPanel>
+                    
+                    <cui:RibbonGroupContainer Header="常用命令">
+                        <!--<cui:ImageButton Name="btnConnect" Header="连接" Visibility="Collapsed"
+                                                 Image="Resources/Images/32/GroupImport.png" Click="btnConnect_Click"/>
+                        <cui:ImageButton Name="btnShapeFile" Header="ShapeFile" ImagePosition="Top" Visibility="Collapsed"
+                                                 Image="Resources/Images/32/GroupGetExternalData.png" Click="btnShapeFile_Click"/>
+                        <cui:ImageButton Name="btnAddShapeFile" Header="Add Shape File" ImagePosition="Top" Visibility="Collapsed"
+                                                 Image="Resources/Images/32/GroupGetExternalData.png" Click="btnAddShapeFile_Click"/>
+                        <cui:ImageButton Name="btnAddSpatialite" Header="Spatialite" ImagePosition="Top" Visibility="Collapsed"
+                                                 Image="Resources/Images/32/GroupGetExternalData.png" Click="btnAddSpatialite_Click"/>-->
+
+                        <kui:MapFullExtentCommand/>
+                        <kui:MapPreviewCommand/>
+                        <kui:MapForwardViewCommand/>
+                        <!--<kui:CommandButton Name="btnHawkeye" Header="鹰眼" Image="pack://application:,,,/Agro.Module.Map;component/Resources/Images/32/全图32.png" Visibility="Collapsed"/>
+                        <kui:CommandButton Name="btnAmplitude" Header="分幅" Image="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/32/图幅.png" Visibility="Collapsed"/>-->
+                    </cui:RibbonGroupContainer>
+                   
+                    <cui:RibbonGroupContainer Header="常用工具">
+                        <kui:MapPanToolButton/>
+                        <kui:SelectFeatureToolButton/>
+                        <kui:FeatureVertexViewToolButton Name="btnFeatureVertex"/>
+                        <kui:MeasureLengthToolButton/>
+                        <kui:MeasureAreaToolButton/>
+                    </cui:RibbonGroupContainer>
+                    
+					<cui:RibbonGroupContainer Header="历史" >
+						<cui:ImageButton Name="btnHistory" Header="历史回溯" Image="../Resources/Images/32/history.png" ToolTip="经营权空间数据历史回溯" />
+					</cui:RibbonGroupContainer>
+					
+				</StackPanel>
+            </cui:TwoButtonScrollViewer>
+        </Border>
+        <Border Name="statusBar" DockPanel.Dock="Bottom" BorderThickness="0,1,0,0" Height="25"
+                         SnapsToDevicePixels="True"       BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+            <DockPanel LastChildFill="False">
+                <kui:MapSpatialReferenceStatusbarShell x:Name="msrSS" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+				<cui:ImageToggleButton Name="btnOverview" ToolTip="鹰眼" Image="pack://application:,,,/Agro.Library.Common;component/Resources/Images/16/overview.png" DockPanel.Dock="Right"/>
+				<Border  Style="{DynamicResource Metro_SeparatorV_Style}" Margin="0" DockPanel.Dock="Right"/>
+				<kui:MapScaleStatusbarShell x:Name="msSS" DockPanel.Dock="Right" Margin="0,0,20,0"/>
+                <Border  Style="{DynamicResource Metro_SeparatorV_Style}" Margin="0" DockPanel.Dock="Right"/>
+                <kui:MapCoordinateStatusbarShell x:Name="coordSS" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+        </Border>
+        <cui:SidebarPage Name="sidePage">
+            <cui:SidebarPage.ContextMenu>
+                <ContextMenu  IsOpen="False">
+                    <MenuItem x:Name="miRemoveLayer" Header="移除">
+                        <MenuItem.Icon>
+                            <Image MaxHeight="32" MaxWidth="32" Stretch="None"
+                                                     Source="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/16/Delete.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="miPropertyTable" Header="属性表" >
+                        <MenuItem.Icon>
+                            <Image MaxHeight="32" MaxWidth="32" Stretch="None"
+                                                     Source="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/16/TableRowsOrColumnsOrCellsInsert.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="数据">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/Images/16/Export.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem x:Name="miExportShapeFile" Header="导出ShapeFile文件">
+                            <MenuItem.Icon>
+                                <Image Source="Resources/Images/16/ShapeFile.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="miExportLayerFile" Header="导出图层样式"/>
+                    </MenuItem>
+                    <MenuItem  Header="可见比例">
+                        <MenuItem Name="miClearVisibleScale" Header="清除可见比例"/>
+                        <MenuItem Name="miSetMaxVisibleScale" Header="设置最大可见比例尺"/>
+                        <MenuItem Name="miSetMinVisibleScale" Header="设置最小可见比例尺"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="miLayerProperty" Header="属性">
+                        <MenuItem.Icon>
+                            <Image MaxHeight="32" MaxWidth="32" Stretch="None"
+                                                     Source="pack://application:,,,/Agro.LibMap;component/UI/Resources/Images/16/property.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </cui:SidebarPage.ContextMenu>
+			<cui:SidebarPage.LeftPanel>
+				<kui:LayersPanel x:Name="layersControl"/>
+			</cui:SidebarPage.LeftPanel>
+			<cui:SidebarPage.BottomPanel>
+				<kui:MapLayerTableView x:Name="mlTableView"/>
+            </cui:SidebarPage.BottomPanel>
+            <Grid>
+                <m:MapControl Name="mapControl" SnapsToDevicePixels="True" ></m:MapControl>
+				<Border Name="bdrOverview" BorderThickness="1" Background="White" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"  Width="200" Height="200" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+					<kui:MapOverviewControl Name="overview"/>
+				</Border>
+				<kui:ClearMapTempElementsCommand Name="btnClear" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Visibility="Collapsed"/>
+                <!--<my:HawkeyeMap HorizontalAlignment="Left" Margin="1,1,0,0" x:Name="hawkeyeMap" VerticalAlignment="Bottom" Height="200" Width="200" BorderBrush="Blue" Visibility="Collapsed"/>-->
+            </Grid>
+        </cui:SidebarPage>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Agro.Module.ThemeAnaly.View.Control.NavigationPanelTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cmc="clr-namespace:Agro.Library.Common;assembly=Agro.Library.Common"
+             xmlns:control="clr-namespace:Agro.Module.ThemeAnaly.View.Control"
+             xmlns:control1="clr-namespace:Agro.Module.ThemeAnaly.View.Control">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                   Margin="0,2,0,0"
+                   FontSize="16"
+                   Background="#B9D3EE"
+                   Height="25"
+                   Text="  行政地域"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"></TextBlock>
+            <cmc:ZoneTree Grid.Row="1" x:Name="navigator" Margin="0,0,-1,0"></cmc:ZoneTree>
+        </Grid>
+        <!--<control1:LinkButtonsPanel Padding="0,5,0,0" Grid.Row="1" DataContext="{Binding LinkButtonsPanelViewModel}"/>-->
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" >
+            <Button Margin="25,3" FontSize="14"  Command="{Binding RealTimeImageCommand}"     Content="实时数据对比分析图" Visibility="Collapsed"></Button>
+            <Button Margin="25,3" FontSize="14"   Name="btnRealTimeTableCommand"      Content="实时数据对比分析表"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnAreaCommand"      Content="承包地面积对比分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnDiffrenceCommand"      Content="实测面积与合同面积差异对比分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnPurposeCommand"      Content="承包地用途结构分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnGetWayCommand"      Content="承包经营权取得方式结构分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnLandLevelCommand"      Content="承包地地力等级结构分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnPerCapitaAreaCommand"      Content="农户人均承包地面积水平分析"></Button>
+            <Button Margin="25,3" FontSize="14"  Name="btnPopulationCommand"      Content="农户人口空间分布情况分析"></Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

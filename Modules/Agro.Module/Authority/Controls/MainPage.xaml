@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="Agro.Module.Authority.MainPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:cui="clr-namespace:Agro.LibCore.UI;assembly=Agro.LibCore"
+                    mc:Ignorable="d"
+                    d:DesignHeight="480"
+                    d:DesignWidth="800">
+    <UserControl.Resources>
+            <LinearGradientBrush x:Key="MainBackgroundBrush" StartPoint="0.102759,-0.0431519" EndPoint="0.802759,0.913967">
+                <GradientStop Color="#FF808593" Offset="0" />
+                <GradientStop Color="#FFE8EBEC" Offset="1" />
+            </LinearGradientBrush>
+            <Style x:Key="Metro_SeparatorV_Style" TargetType="Border">
+                <Setter Property="Width" Value="1"/>
+                <Setter Property="Margin" Value="3,0"/>
+                <Setter Property="BorderThickness" Value="1,0,0,0"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Metro_Window_Style_BorderBrush_Default}"/>
+            </Style>
+
+
+        <!--yxm 2018-1-29-->
+        <Style x:Key="Metro_TreeView_Item_Toggle_Style"
+           TargetType="ToggleButton">
+            <Setter Property="Focusable"
+                Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid Width="24"
+                          Height="20"
+                          Background="Transparent">
+                            <Path x:Name="ExpandPath"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Fill="{DynamicResource Metro_Window_Style_BorderBrush_Darker}"
+                              Data="M 4 1 L 10 5 L 4 9 Z" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                                 Value="True">
+                                <Setter Property="Data"
+                                    TargetName="ExpandPath"
+                                    Value="M 10 1 L 10 8 L 3 8 Z" />
+                                <Setter Property="Fill"
+                                    TargetName="ExpandPath"
+                                    Value="{DynamicResource Metro_Window_Style_Foreground}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                 Value="True">
+                                <Setter Property="Fill"
+                                    TargetName="ExpandPath"
+                                    Value="{DynamicResource Metro_Window_StartButton_Style_Background_Hover}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Metro_TreeView_Item_Style" TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded,Mode=TwoWay}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <StackPanel>
+                            <Border Tag="{Binding}" Margin="-1600,0,0,0"  x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  SnapsToDevicePixels="true">
+                                <Border Padding="1600,0,0,0">
+                                    <DockPanel Background="Transparent" LastChildFill="True">
+                                        <ToggleButton  x:Name="Expander" DockPanel.Dock="Left" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource Metro_TreeView_Item_Toggle_Style}"/>
+                                        <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </DockPanel>
+                                </Border>
+                            </Border>
+
+                            <ItemsPresenter  x:Name="ItemsHost" Margin="16,0,0,0"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="false">
+                                <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+                            </Trigger>
+
+
+                            <Trigger Property="IsMouseOver" SourceName="Bd"  Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Metro_Button_Style_Background_Hover}" />
+                                <Setter Property="Background" TargetName="Expander" Value="#FF404040"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Metro_Button_Style_Background_Pressed}" />
+                                <Setter Property="Background" TargetName="Expander" Value="#FF404040"/>
+                            </Trigger>
+
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Metro_Button_Style_Background_SelectedInactive}"/>
+                                <Setter Property="Background" TargetName="Expander" Value="#FF404040"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TreeViewStyle1" TargetType="TreeView">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeView}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true"
+                            HorizontalAlignment="Stretch">
+                            <ScrollViewer x:Name="_tv_scrollviewer_" Background="{TemplateBinding Background}" CanContentScroll="false" Focusable="false"
+                                       Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemContainerStyle" Value="{DynamicResource  Metro_TreeView_Item_Style}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <DockPanel>
+                <Border DockPanel.Dock="Top" Height="30" Background="#B9D3EE" Margin="0,2,0,0">
+                    <TextBlock  DockPanel.Dock="Top"
+                   Margin="0,2,0,0"
+                   FontSize="16"
+                   Text="  用户" VerticalAlignment="Center"
+                   Foreground="{DynamicResource Metro_Window_Style_Foreground_Highlight}"></TextBlock>
+                </Border>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Visibility="Collapsed">
+                    <Button Name="btnAddUser" 
+                                   ToolTip="添加用户"
+                                   Padding="4,2,4,2"
+                                   Height="26"
+                                   Width="30"
+                                   VerticalContentAlignment="Stretch"
+                                   >
+                        <Image Source="../Resources/Images/16/Add.png" Stretch="None" Height="20" VerticalAlignment="Top" />
+                    </Button>
+                    <cui:ImageButton Name="btnDelUser"
+                                   ToolTip="删除用户"
+                                   Padding="4,2,4,2"
+                                   Height="26"
+                                   Width="30"
+                                   VerticalContentAlignment="Stretch"
+                                   Image="../Resources/Images/16/Delete.png"
+                                   />
+                    <Border Style="{StaticResource Metro_SeparatorV_Style}" DockPanel.Dock="Left"/>
+                    <Button Name="btnModifyPwd"
+                                   ToolTip="设置用户密码"
+                                   Padding="4,2,4,2"
+                                   Height="26"
+                                   Width="30"
+                                   VerticalContentAlignment="Stretch"
+                                   >
+                        <Image Source="../Resources/Images/16/page_key.png" />
+                    </Button>
+                </StackPanel>
+                <Border BorderThickness="0,1,1,0" BorderBrush="{DynamicResource Metro_Window_Style_BorderBrush_Default}">
+                    <ListBox x:Name="lbUsers"
+                             ItemTemplate="{DynamicResource DefaultListBoxItem_ItemTemplate}">
+                        <!--<ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="25">
+                                    <TextBlock Text="{Binding}"  VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>-->
+                    </ListBox>
+                </Border>
+            </DockPanel>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"  Background="Transparent"/>            <!--<ListBox Name="lbModules" Style="{StaticResource ListBoxStyle1}" Grid.Column="2" ></ListBox>-->
+            <TreeView x:Name="lbModules" Grid.Column="2" Style="{StaticResource TreeViewStyle1}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                        <DockPanel LastChildFill="True"
+                                           HorizontalAlignment="Stretch"                               
+                                           Height="38">
+                            <CheckBox DockPanel.Dock="Left"
+                                              Margin="4,0,0,0"
+                                              VerticalAlignment="Center"
+                                              Tag="{Binding}"  IsChecked="{Binding Path=IsChecked,Mode=TwoWay}" 
+                                              Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ></CheckBox>
+                            <Grid DockPanel.Dock="Left"
+                                          Margin="4,0,4,0"
+                                         >
+                                <Image Source="{Binding Path=IconPath}" DockPanel.Dock="Left" MaxWidth="32" MaxHeight="32" Margin="2,0"
+                               Tag="{Binding}" 
+                                   Visibility="{Binding Path=IsBusy,Converter={StaticResource NotBoolToVisibilityConverter}}" Stretch="None"/>
+                                <!--<mui:LoadingIcon Width="16"
+                                                          Height="16"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          Visibility="{Binding Path=IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          RenderOptions.BitmapScalingMode="NearestNeighbor"></mui:LoadingIcon>-->
+
+                            </Grid>
+                            <TextBlock Text="{Binding Path=Title}" VerticalAlignment="Center"
+                                               Margin="0,0,0,1" />
+                        </DockPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+
+        </Grid>
+        <!--<Border Name="bdrMask" Background="#7F000000" Visibility="Hidden"/>-->
+    </Grid>
+</UserControl>

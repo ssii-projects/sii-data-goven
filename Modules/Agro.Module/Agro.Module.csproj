@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	  <LangVersion>10.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SketchMap\Resources\Images\32\Save32.png" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\Common\SII.Library.Common\SII.Library.Common.csproj" />
+    <ProjectReference Include="..\..\Library\Common\SII.Office\SII.Office.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Agro.FrameWork">
+      <HintPath>..\..\Dependencies\SII\Agro.FrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibCore">
+      <HintPath>..\..\Dependencies\SII\Agro.LibCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibMap">
+      <HintPath>..\..\Dependencies\SII\Agro.LibMap.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\..\Dependencies\NTS\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI">
+      <HintPath>..\..\Dependencies\Database\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>..\..\Dependencies\Database\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\..\Dependencies\NTS\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Dependencies\SII\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\Dependencies\NPIONet40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WPFVisifire.Charts">
+      <HintPath>..\..\Dependencies\Chart\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Authority\Resources\Images\16\Add.png" />
+    <Resource Include="Authority\Resources\Images\16\Delete.png" />
+    <Resource Include="Authority\Resources\Images\16\page_key.png" />
+    <Resource Include="DataBrowse\Resources\Folder.png" />
+    <Resource Include="DataOperator\Resources\Images\32\AddLayer.png" />
+    <Resource Include="DataOperator\Resources\Images\32\download.png" />
+    <Resource Include="DataOperator\Resources\Images\32\上一视图.png" />
+    <Resource Include="DataOperator\Resources\Images\32\下一视图.png" />
+    <Resource Include="DataOperator\Resources\Images\32\全图32.png" />
+    <Resource Include="DataOperator\Resources\Images\32\压缩.png" />
+    <Resource Include="DataOperator\Resources\Images\32\截屏.png" />
+    <Resource Include="Resources\Images\16\Analy.png" />
+    <Resource Include="Resources\Images\16\Export.png" />
+    <Resource Include="Resources\Images\16\GroupZoom.png" />
+    <Resource Include="Resources\Images\16\mapsheet.png" />
+    <Resource Include="Resources\Images\16\Shapefile.png" />
+    <Resource Include="Resources\Images\32\DataQuery.png" />
+    <Resource Include="Resources\Images\32\history.png" />
+    <Resource Include="Resources\Images\32\mapsheet.png" />
+    <Resource Include="SketchMap\Resources\Images\32\Clear.png" />
+    <Resource Include="SketchMap\Resources\Images\32\Edit.png" />
+    <Resource Include="SketchMap\Resources\Images\32\FileNew.png" />
+    <Resource Include="SketchMap\Resources\Images\32\PivotTableLayoutShowInCompactForm.png" />
+    <Resource Include="SketchMap\Resources\Images\32\Save32.png" />
+  </ItemGroup>
+
+</Project>

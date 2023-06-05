@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	  <LangVersion>10.0</LangVersion>
+	  <OutputType>WinExe</OutputType>
+	  <PackageIcon>Application.ico</PackageIcon>
+	  <ApplicationIcon>Application.ico</ApplicationIcon>
+	  <BaseOutputPath>bin\</BaseOutputPath>
+	  <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\16\全图16.png" />
+    <None Remove="Resources\Images\32\download.png" />
+    <None Remove="Resources\Images\32\open.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\Common\SII.Library.Common\SII.Library.Common.csproj" />
+    <ProjectReference Include="..\..\Library\Common\SII.Office\SII.Office.csproj" />
+    <ProjectReference Include="..\..\Modules\Agro.Module\Agro.Module.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Agro.FrameWork">
+      <HintPath>..\..\Dependencies\SII\Agro.FrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibCore">
+      <HintPath>..\..\Dependencies\SII\Agro.LibCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Agro.LibMap">
+      <HintPath>..\..\Dependencies\SII\Agro.LibMap.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\..\Dependencies\NTS\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI">
+      <HintPath>..\..\Dependencies\Database\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>..\..\Dependencies\Database\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\..\Dependencies\NTS\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Dependencies\SII\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\Dependencies\NPIONet40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\16\全图16.png" />
+    <Resource Include="Resources\Images\32\download.png" />
+    <Resource Include="Resources\Images\32\open.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Application.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Copy /Y &quot;$(ProjectDir)Data\*.db&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;Copy /Y &quot;$(SolutionDir)Dependencies\NTS\*.dll&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;Copy /Y &quot;$(SolutionDir)Dependencies\NPIONet40\NPOI.dll&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;if not exist &quot;$(TargetDir)data\&quot; (xcopy /s /Y &quot;$(SolutionDir)Dependencies\data\*.*&quot; &quot;$(TargetDir)data\&quot;)&#xD;&#xA;xcopy /Y /s &quot;$(SolutionDir)Dependencies\SII\*.dll&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;xcopy /Y /s &quot;$(SolutionDir)Dependencies\Database\SQLite\*.dll&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;if not exist &quot;$(TargetDir)/x64/gdal200.dll&quot; (xcopy /Y /s &quot;$(SolutionDir)Dependencies\GDAL200\*.dll&quot; &quot;$(TargetDir)&quot;)" />
+  </Target>
+
+
+
+</Project>

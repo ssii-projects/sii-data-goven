@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Agro.Library.Common">
+
+    <DataTemplate x:Key="DefaultListBoxItem_ItemTemplate">
+        <Border Height="28">
+            <TextBlock Text="{Binding}" Margin="4,0" VerticalAlignment="Center" />
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>
