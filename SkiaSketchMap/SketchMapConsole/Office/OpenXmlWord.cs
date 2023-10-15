@@ -18,7 +18,6 @@ namespace SketchMap.Office
     public class OpenXmlWord:IDisposable
     {
         private WordprocessingDocument? _doc;
-        //private IDictionary<string, BookmarkStart>? bookmarkMap = null;// new Dictionary<string, BookmarkStart>();
         public WordprocessingDocument Doc { get { return _doc!; } }
         public IEnumerable<Paragraph>? Paragraphs
         {
@@ -28,10 +27,10 @@ namespace SketchMap.Office
                 return body?.Elements<Paragraph>();
             }
         }
-        public string Path { get;private set; }=string.Empty;
+        public string DocFilePath { get;private set; }=string.Empty;
         public void Open(string path, bool isEditable=true)
         {
-            Path = path;
+            DocFilePath = path;
             _doc = WordprocessingDocument.Open(path, isEditable);
         }
         public void DeleteLastParagraph()
@@ -62,7 +61,6 @@ namespace SketchMap.Office
         }
         public Table? GetTable(int index)
         {
-            //var doc = _doc!;
             var body = _doc?.MainDocumentPart?.Document?.Body;
             var lst=body?.Elements<Table>();
             if (lst != null)
@@ -77,16 +75,6 @@ namespace SketchMap.Office
                     ++i;
                 }
             }
-            //var table=body.GetFirstChild<Table>();
-            
-            //for(var i=0;table!= null ; ++i)
-            //{
-            //    if (i == index)
-            //    {
-            //        return table;
-            //    }
-            //    table=table.NextSibling<Table>();
-            //}
             return null;
         }
         public TableRow? GetTableRow(Table table,int row)
@@ -329,11 +317,9 @@ namespace SketchMap.Office
 
             var document = _doc!;
             // Open the document for read access and get a reference.
-            //using (var document =
-            //    WordprocessingDocument.Open(fileName, false))
-            //{
             // Get a reference to the main document part.
-                var docPart = document.MainDocumentPart;
+            var docPart = document.MainDocumentPart;
+            if (docPart!=null){
 
                 // Assign a reference to the appropriate part to the
                 // stylesPart variable.
@@ -346,114 +332,47 @@ namespace SketchMap.Office
                 // If the part exists, read it into the XDocument.
                 if (stylesPart != null)
                 {
-                using var reader = XmlNodeReader.Create(
-                  stylesPart.GetStream(FileMode.Open, FileAccess.Read));
-                // Create the XDocument.
-                styles = XDocument.Load(reader);
+                    using var reader = XmlNodeReader.Create(
+                      stylesPart.GetStream(FileMode.Open, FileAccess.Read));
+                    // Create the XDocument.
+                    styles = XDocument.Load(reader);
+                }
             }
-            //}
-            // Return the XDocument instance.
             return styles;
         }
 
-        ///// <summary>
-        ///// 向指定的表中插入单元格
-        ///// </summary>
-        ///// <param name="tableIndex">表号</param>
-        ///// <param name="tableIndex">开始插入行</param>
-        ///// <param name="rowCount">插入几行数据</param>
-        //public void InsertTableRowClone(int tableIndex, int startRow, int rowCount = 0)
+
+        //private void UpdateCellText(TableCell cell)//,string text)
         //{
-        //    //if (doc == null)
-        //    //{
-        //    //    return;
-        //    //}
-        //    //NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
-        //    //if (tables == null || tables.Count == 0 || tableIndex >= tables.Count)
-        //    //{
-        //    //    return;
-        //    //}
-        //    //Table table = tables[tableIndex] as Table;
-        //    var table=GetTable(tableIndex);
-        //    if (table == null)
+        //    var lst = cell.Elements<Paragraph>();
+        //    foreach (var it in lst)
         //    {
-        //        return;
-        //    }
-        //    var rows = table.Elements<TableRow>();
-        //    if (startRow >=rows.Count())
-        //    {
-        //        return;
-        //    }
-        //    try
-        //    {
-        //        //Node node = null;
-        //        int rowNumber = rows.Count();
-        //        if (rowCount == 0)
+        //        var jt = it.Elements<Run>();
+        //        foreach (var k in jt)
         //        {
-        //            for (int index = 0; index < rowNumber; index++)
+        //            foreach (var t in k.Elements<Text>())
         //            {
-        //                var row=GetTableRow(table, index)!;
-        //                var newRow=(TableRow)row.Clone();
-        //                table.AddChild(newRow);
-        //                //node = table.Rows[index].Clone(true);
-        //                //table.Rows.Add(node);
+        //                //if (dic.TryGetValue(t.Text, out var txt))
+        //                //{
+        //                //    t.Text = txt;
+        //                //}
+        //                //Console.WriteLine(t.Text);
         //            }
         //        }
-        //        else
-        //        {
-        //            for (int index = 0; index < rowCount; index++)
-        //            {
-        //                var row = GetTableRow(table, startRow)!;
-        //                var newRow = (TableRow)row.Clone();
-        //                table.InsertAt(newRow, startRow);
-        //                //node = table.Rows[startRow].Clone(true);
-        //                //table.Rows.Insert(table.Rows.Count, node);
-        //            }
-        //        }
-        //        //node = null;
-        //        //table = null;
-        //        //tables = null;
         //    }
-        //    catch (SystemException ex)
-        //    {
-        //        System.Diagnostics.Debug.WriteLine(ex.ToString());
-        //    }
+
+
+
+        //    //// Find the first paragraph in the table cell.
+        //    //Paragraph p = cell.Elements<Paragraph>().First();
+
+        //    //// Find the first run in the paragraph.
+        //    //Run r = p.Elements<Run>().First();
+
+        //    //// Set the text for the run.
+        //    //Text t = r.Elements<Text>().First();
+        //    //t.Text = text;
         //}
-
-        private void UpdateCellText(TableCell cell)//,string text)
-        {
-          
-            //cell.RemoveAllChildren();
-            //cell.Append(new Paragraph(new Run(new Text(text))));
-            var lst = cell.Elements<Paragraph>();
-            foreach (var it in lst)
-            {
-                var jt = it.Elements<Run>();
-                foreach (var k in jt)
-                {
-                    foreach (var t in k.Elements<Text>())
-                    {
-                        //if (dic.TryGetValue(t.Text, out var txt))
-                        //{
-                        //    t.Text = txt;
-                        //}
-                        //Console.WriteLine(t.Text);
-                    }
-                }
-            }
-
-
-
-            //// Find the first paragraph in the table cell.
-            //Paragraph p = cell.Elements<Paragraph>().First();
-
-            //// Find the first run in the paragraph.
-            //Run r = p.Elements<Run>().First();
-
-            //// Set the text for the run.
-            //Text t = r.Elements<Text>().First();
-            //t.Text = text;
-        }
 
         public void Dispose()
         {

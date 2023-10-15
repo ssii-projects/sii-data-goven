@@ -54,7 +54,7 @@ namespace Agro.Module.SketchMap
 			}
 			if (tempPath == null)
 			{
-				tempPath = filePath + @"\Jpeg\";
+				tempPath =Path.Combine(filePath , "Jpeg/");
 			}
 			var fDeleteJPGFolder=DeleteJPGFolder;
 			if (DeleteJPGFolder && Directory.Exists(tempPath))
@@ -63,7 +63,7 @@ namespace Agro.Module.SketchMap
 			}
 
 			var docTmplFile = AppDomain.CurrentDomain.BaseDirectory + @"Data\Template\农村土地承包经营权承包地块示意图.dot";
-			var fileName = filePath + @"\" + $"DKSYT{concord.CBFBM}J";
+			var fileName =Path.Combine(filePath , $"DKSYT{concord.CBFBM}J");
 			InitalizeAllView(concord, lands, tempPath, onError);
 			InitalizeLocalView(concord, lands, tempPath,onError);
 			var data = new SkecthMapExport

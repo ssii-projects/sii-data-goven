@@ -3,11 +3,19 @@ using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using System.Data;
-using System.Data.SQLite;
+
+
+//using System.Data.SQLite;
 using JTSGeometry = GeoAPI.Geometries.IGeometry;
 using WKBPolygon = NetTopologySuite.Geometries.Polygon;
 using WKBCoordinate = GeoAPI.Geometries.Coordinate;
 using IWKBLinearRing = GeoAPI.Geometries.ILinearRing;
+using Microsoft.Data.Sqlite;
+using SQLiteConnection = Microsoft.Data.Sqlite.SqliteConnection;
+using SQLiteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
+using SQLiteTransaction = Microsoft.Data.Sqlite.SqliteTransaction;
+using SQLiteCommand = Microsoft.Data.Sqlite.SqliteCommand;
+using SQLiteParameter = Microsoft.Data.Sqlite.SqliteParameter;
 
 namespace Agro.LibCore
 {
@@ -138,7 +146,7 @@ namespace Agro.LibCore
         public const int MAX_VARCHAR_LEN = 1000;
 
         #region Private Fields
-        protected SQLiteConnection _con;
+        protected SqliteConnection _con;
 
         #endregion
 
@@ -149,7 +157,8 @@ namespace Agro.LibCore
         /// <param name="SQLiteName">传入的数据库名称，如：c:/test.db</param>
         public static void CreatNewSQLite(string SQLiteName)
         {
-            SQLiteConnection.CreateFile(SQLiteName);
+            //SQLiteConnection.CreateFile(SQLiteName);
+            System.Diagnostics.Debug.Assert(false);
         }
         public string ConnectionString
         {
@@ -2455,10 +2464,15 @@ namespace Agro.LibCore
         protected readonly GeoDBSqlite _db = new();
 
         private SQLiteTransaction? _trans = null;
-
+        private static bool _batteriesInited = false;
         public SQLiteWorkspace()
         {
             SqlFunc = _db.SqlFunc;
+            if (!_batteriesInited)
+            {
+                SQLitePCL.Batteries.Init();
+                _batteriesInited = true;
+            }
         }
 
         public void CreateDatabase(string dbFileName)
@@ -2695,3 +2709,4 @@ namespace Agro.LibCore
         }
     }
 }
+

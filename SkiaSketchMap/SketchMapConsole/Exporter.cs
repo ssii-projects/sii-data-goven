@@ -16,10 +16,15 @@ namespace SketchMap
 {
     internal class Exporter
     {
-        private readonly Logout _logout = new(null, false);
+        private readonly Logout _logout = new(null);//, false);
         private SkecthMapProperty _prm;
         public void Test(string[] args)
         {
+            foreach (var arg in args)
+            {
+                //Console.WriteLine($"Argument={arg}");
+                ReportInformation($"Argument={arg}",false);
+            }
             GisGlobal.SymbolFactory = SkiaSymbolFactory.Instance;
 
             SkiaSymbolFactory.RegisterFontFromEmbeddedResource(EmbeddedResourceUtil.GetFontPath("esri_40.ttf"));
@@ -119,11 +124,6 @@ namespace SketchMap
 
             foreach (var concord in concords)
             {
-                //if (concord.Lands == null || concord.Lands.Length == 0)
-                //{
-                //	ReportWarning($"{concord.CBFMC}[{concord.CBFBM}]无地块数据!");
-                //	continue;
-                //}
                 var cbfBM = DataExchange.InitalizeSenderCode(concord);
                 var lands = SketchMapUtil.QueryDKByCbfbm(cbfBM, concord.Lands, NotCancelTracker.Instance, false);
                 if (lands.Count == 0)
@@ -136,16 +136,16 @@ namespace SketchMap
                 try
                 {
                     ReportInformation($"准备输出：{concord.CBFMC}[{concord.CBFBM}]");
-                    var tmpPath = Path.Combine(filePath, $"{concord.CBFBM}/");
+                    var tmpPath = Path.Combine(filePath, $"{concord.CBFBM}");
                     ReportInformation($"准备输出JPG路径：{tmpPath}");
-                    exporter.ExportSketchMapByContractor(concord, lands, filePath, tmpPath, err =>
+                    var outFile=exporter.ExportSketchMapByContractor(concord, lands, filePath, tmpPath, err =>
                     {
                         if (err != null)
                         {
                             ReportError(err.Message);
                         }
                     });
-                    ReportInformation($"已输出：{concord.CBFMC}[{concord.CBFBM}]");
+                    ReportInformation($"已输出：{concord.CBFMC}[{concord.CBFBM}]-{outFile}");
                 }
                 catch (Exception ex)
                 {
@@ -191,10 +191,10 @@ namespace SketchMap
             return cc;
         }
 
-        public void ReportInformation(string err)
+        public void ReportInformation(string err,bool fWriteToConsole = true)
         {
             //Console.Error.WriteLine(err);
-            _logout.WriteInformation(err);
+            _logout.WriteInformation(err,true,fWriteToConsole);
         }
         public void ReportError(string err)
         {
@@ -218,24 +218,36 @@ namespace SketchMap
             {
                 if (logFile == null)
                 {
-                    var logPath = AppDomain.CurrentDomain.BaseDirectory + "log\\";
+                    var logPath =Path.Combine(AppDomain.CurrentDomain.BaseDirectory , "log");
                     if (!Directory.Exists(logPath))
                     {
                         Directory.CreateDirectory(logPath);
                     }
-                    logFile = Path.Combine(logPath + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt");
+                    //logFile = Path.Combine(logPath, DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt");
+                    logFile = Path.Combine(logPath, DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
+                    if (File.Exists(logFile))
+                    {
+                        try
+                        {
+                            File.Delete(logFile);
+                        }
+                        catch { }
+                    }
                 }
                 this.logFile = logFile;
             }
 
             Console.OutputEncoding = Encoding.UTF8;// Encoding.GetEncoding(Encoding.UTF8);
-            Console.SetOut(TextWriter.Null);
+            //Console.SetOut(TextWriter.Null);
         }
-        public void WriteInformation(string msg, bool fWriteHeader = true)
+        public void WriteInformation(string msg, bool fWriteHeader = true, bool fWriteToConsole = true)
         {
             var str = FormatMsg("info", msg, fWriteHeader);
             WriteMsg(str);
-            Console.WriteLine(str);
+            if (fWriteToConsole)
+            {
+                Console.WriteLine(str);
+            }
         }
         public void WriteWarning(string msg, bool fWriteHeader = true)
         {
@@ -258,7 +270,7 @@ namespace SketchMap
         }
         private void WriteMsg(string msg)
         {
-            if (!IsWriteToFile) return;
+            if (!IsWriteToFile||string.IsNullOrEmpty(logFile)) return;
 
             var fileMode = File.Exists(logFile) ? FileMode.Append : FileMode.Create;
             using var fs = new FileStream(logFile, fileMode, FileAccess.Write);

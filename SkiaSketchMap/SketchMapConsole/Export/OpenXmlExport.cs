@@ -53,20 +53,18 @@ namespace SketchMap
 
         public bool DeleteTempFile { get; set; }
 
-        public void Save(ContractConcord concord)//,string fileName)
+        public void Save(ContractConcord concord)
         {
             if (Contractor == null || Contractor.Lands == null || Contractor.Lands.Length <= 6)
             {
                 DeleteTable(1);
             }
-            //InitalizeAgricultureValue();
             var lstPicFiles=new List<string>();
             InitalizeDataInformation();
             AgricultureStrandardLandProgress(lstPicFiles);
-            var overviewPicFile=InitalizeAllEngleView();
-            //Doc.SaveAs(fileName);
-            var n=Path.LastIndexOf('.');
-            var pdfFile=Path[..n] +".pdf";
+            InitalizeAllEngleView();
+            var n=DocFilePath.LastIndexOf('.');
+            var pdfFile=DocFilePath[..n] +".pdf";
             new PdfGenerator(this).SavePdf(pdfFile);//, overviewPicFile,lstPicFiles);
             Doc.Save();
         }
@@ -121,7 +119,6 @@ namespace SketchMap
                 return;
             }
             int pageCount = InitalizeLandRowInformation();
-            //InsertFirstPageLandPics();
             InsertPageLandPics(pageCount,lstPicFiles);
         }
         /// <summary>
@@ -155,7 +152,6 @@ namespace SketchMap
             {
                 var table = (Table)GetTable(1)!.Clone();
                 body.AppendChild(table);
-                //InsertTableRowClone(1, 0);
             }
             int totalPage = pageCount + 2;
             SetCellValue(0, 7, 5, "1/" + totalPage.ToString());
@@ -167,31 +163,6 @@ namespace SketchMap
             return totalPage;// pageCount;
         }
 
-        ///// <summary>
-        ///// 插入首页的地块影像信息
-        ///// </summary> 
-        //private void InsertFirstPageLandPics()
-        //{
-        //    if (Contractor == null || Contractor.Lands == null || Contractor.Lands.Length == 0)
-        //    {
-        //        return;
-        //    }
-        //    int landIndex = 0;
-        //    for (int rowIndex = 1; rowIndex < 3; rowIndex++)
-        //    {
-        //        for (int colInex = 1; colInex < 4; colInex++)
-        //        {
-        //            if (landIndex >= Contractor.Lands.Length)
-        //            {
-        //                continue;
-        //            }
-        //            var land = Contractor.Lands[landIndex];
-        //            //InsertImageShapeFirstPage(land, rowIndex, colInex, 0);
-        //            InsertImageShape(land,rowIndex,colInex);
-        //            landIndex++;
-        //        }
-        //    }
-        //}
 
         /// <summary>
         /// 插入地块影像信息
@@ -217,7 +188,7 @@ namespace SketchMap
                             return;
                         }
                         var land = lands[landIndex];
-                        string imagePath = FilePath + land.DKBM + ".jpg";
+                        string imagePath =Path.Combine(FilePath , land.DKBM + ".jpg");
                         lstPicFiles.Add(imagePath);
                         InsertImageShape(land, rowIndex, colInex,imagePath, tableIndex);
                         landIndex++;
@@ -259,7 +230,6 @@ namespace SketchMap
                 InitalizeLandRepertory(land, rowIndex, columnIndex, tableIndex, 100, 100);
                 if (File.Exists(imagePath))
                 {
-                    //var table = GetTable(tableIndex);
                     var cell = GetTableCell(tableIndex, rowIndex, columnIndex);
                     if(cell != null)
                     {
@@ -268,8 +238,6 @@ namespace SketchMap
 
                         SetCellPicture(cell!, imagePath, width, height);
                     }
-                    
-                    //SetTableCellValue(tableIndex, rowIndex, columnIndex, imagePath, 100, 100, false);
                 }
             }
             catch (SystemException ex)
@@ -303,8 +271,8 @@ namespace SketchMap
                 landRepertory.AgriLand.SCMJM = land.HTMJM;
             }
             landRepertory.LandCollection = DKS.FindAll(ld => ld.DKBM != land.DKBM);
-            landRepertory.ImagePath = FilePath + land.DKBM + ".jpg";
-            landRepertory.EaglePath = FilePath + Contractor.CBFBM + ".jpg";
+            landRepertory.ImagePath =Path.Combine(FilePath , land.DKBM + ".jpg");
+            landRepertory.EaglePath =Path.Combine(FilePath , Contractor.CBFBM + ".jpg");
             lands.Add(landRepertory);
         }
         /// <summary>
@@ -312,14 +280,12 @@ namespace SketchMap
         /// </summary>
         private string InitalizeAllEngleView()
         {
-            string fileName = FilePath + Contractor.CBFBM + ".jpg";
+            string fileName =Path.Combine(FilePath , Contractor.CBFBM + ".jpg");
             if (System.IO.File.Exists(fileName))
             {
-                //InsertImageCellWithoutPading("DYST", fileName, 180, 180);ex, 100, 100);
                 var table = GetTable(0);
                 var cell = GetTableCell(table!, 1, 0);
                 SetCellPicture(cell!, fileName, 6.37, 6.37);
-                //SetTableCellValue(tableIndex, rowIndex, columnIndex, imagePath, 100, 100, false);
             }
             return fileName;
         }

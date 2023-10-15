@@ -35,7 +35,7 @@ namespace ConsoleApp1
             //map.SetSpatialReference(_spatialReference, false);
             var layer1 = map.Layers.GetLayer(0) as IFeatureLayer;
             var layer2 = map.Layers.GetLayer(1) as IFeatureLayer;
-            var fc=fws.OpenFeatureClass("DLXX_DK");
+            var fc=fws.OpenFeatureClass("dlxx_dk");
             layer2.FeatureClass = fc;
             layer2.FeatureLabeler.SetLabelExpression("[name] \\ [code]");
             //layer2.Where = "rowid<100";

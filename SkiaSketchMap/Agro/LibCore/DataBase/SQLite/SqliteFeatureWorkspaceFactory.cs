@@ -1,7 +1,13 @@
 ﻿using GeoAPI.Geometries;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
+//using System.Data.SQLite;
+
+using Microsoft.Data.Sqlite;
+using SQLiteConnection = Microsoft.Data.Sqlite.SqliteConnection;
+using SQLiteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
+using SQLiteTransaction = Microsoft.Data.Sqlite.SqliteTransaction;
+using SQLiteCommand = Microsoft.Data.Sqlite.SqliteCommand;
 
 namespace Agro.LibCore
 {
@@ -255,7 +261,9 @@ namespace Agro.LibCore
                     var o = r.GetValue(i);
                     if (i == iOidField)
                     {
-                        feature.Oid = (int)(r.GetRawDataReader() as System.Data.SQLite.SQLiteDataReader).GetInt64(i);
+                        //feature.Oid = (int)(r.GetRawDataReader() as System.Data.SQLite.SQLiteDataReader).GetInt64(i);
+                        feature.Oid = (int)(r.GetRawDataReader() as Microsoft.Data.Sqlite.SqliteDataReader).GetInt64(i);
+
                         o = feature.Oid;
                     }
                     else if (i == iShapeField)
@@ -897,7 +905,7 @@ namespace Agro.LibCore
 
         private IFields getSubFields(IDataReader dr, IFields fields = null)
         {
-            var r = dr.GetRawDataReader() as System.Data.SQLite.SQLiteDataReader;
+            var r = dr.GetRawDataReader() as Microsoft.Data.Sqlite.SqliteDataReader;// System.Data.SQLite.SQLiteDataReader;
             if (fields == null)
             {
                 fields = new Fields();

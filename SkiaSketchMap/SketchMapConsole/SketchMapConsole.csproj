@@ -55,9 +55,6 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Update="App.config">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
 	  <None Update="Data\Fonts\simfang.ttf">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>

@@ -39,22 +39,20 @@ namespace SketchMap
         /// <summary>
         /// 根据承包方导出地块示意图
         /// </summary>
-        public void ExportSketchMapByContractor(ContractConcord concord, List<VEC_CBDK> lands, string filePath, string? tempPath = null, Action<Exception>? onError = null)
+        public string ExportSketchMapByContractor(ContractConcord concord, List<VEC_CBDK> lands, string filePath, string? tempPath = null, Action<Exception>? onError = null)
         {
             System.Diagnostics.Debug.Assert(MapProperty!= null);
             if (!Directory.Exists(filePath))
             {
                 Directory.CreateDirectory(filePath);
             }
-            tempPath ??= filePath + @"/Jpeg/";
+            tempPath ??=Path.Combine(filePath , "Jpeg");
             var fDeleteJPGFolder = DeleteJPGFolder;
             if (DeleteJPGFolder && Directory.Exists(tempPath))
             {
                 fDeleteJPGFolder = false;
             }
 
-            var docTmplFile =$"{AppPath.TemplatePath}农村土地承包经营权承包地块示意图.docx";
-            var fileName = filePath + @"/" + $"DKSYT{concord.CBFBM}J";
             InitalizeAllView(concord, lands, tempPath, onError);
             InitalizeLocalView(concord, lands, tempPath, onError);
             using var data = new OpenXmlExport//SkecthMapExport
@@ -62,12 +60,15 @@ namespace SketchMap
                 MapProperty = MapProperty,
                 Contractor = concord,
                 DKS = lands,
-                FilePath = tempPath// filePath + @"\Jpeg\"
+                FilePath = tempPath
             };
             if (!Directory.Exists(data.FilePath))
             {
                 Directory.CreateDirectory(data.FilePath);
             }
+
+            var fileName = Path.Combine(filePath, $"DKSYT{concord.CBFBM}J");
+
             data.CanEditor = true;
             data.FileName = fileName;
 
@@ -77,9 +78,10 @@ namespace SketchMap
             {
                 File.Delete(docFileName);
             }
+            var docTmplFile = $"{AppPath.TemplatePath}农村土地承包经营权承包地块示意图.docx";
             File.Copy(docTmplFile, docFileName);
             data.Open(docFileName, true );
-            data.Save(concord);//, docFileName);
+            data.Save(concord);
 
             /*
             data.OpenTemplate(docTmplFile);
@@ -114,6 +116,7 @@ namespace SketchMap
             data.Destroyed(fDeleteJPGFolder);
             //entry.Destroyed();
             */
+            return docFileName;
         }
 
         /// <summary>
@@ -125,16 +128,13 @@ namespace SketchMap
         /// <param name="filePath"></param>
         private void InitalizeAllView(ContractConcord concord, List<VEC_CBDK> lands, string filePath, Action<Exception>? onFinish)
         {
-            var sFilePath = filePath;// filePath + @"\Jpeg\";
+            var sFilePath = filePath;
             if (!Directory.Exists(sFilePath))
             {
                 Directory.CreateDirectory(sFilePath);
             }
-            //Invoke(() =>
-            //{
-                var err = ExportOverView(concord, lands, sFilePath);
-                onFinish?.Invoke(err);
-            //});
+            var err = ExportOverView(concord, lands, sFilePath);
+            onFinish?.Invoke(err);
         }
         /// <summary>
         /// 导出主地图（大图）
@@ -146,16 +146,16 @@ namespace SketchMap
         private Exception? ExportOverView(ContractConcord concord, List<VEC_CBDK> lands, string filePath)
         {
             Exception? retEx = null;
-            string fileName = filePath + concord.CBFBM + ".jpg";
+            string fileName =Path.Combine(filePath , concord.CBFBM + ".jpg");
             if (File.Exists(fileName))
             {
                 return retEx;
             }
-            var plc = _plc;// new PageLayoutControl();
+            var plc = _plc;
             var pl = plc;
             try
             {
-                string tmplFile = $"{AppPath.TemplatePath}地块示意图/地块鹰眼图.kpd";
+                string tmplFile =Path.Combine(AppPath.TemplatePath,"地块示意图/地块鹰眼图.kpd");
                 pl.OpenDocument(tmplFile, false);
 
                 #region 连接数据源
@@ -260,7 +260,7 @@ namespace SketchMap
             {
                 return retEx;
             }
-            string fileName = filePath + land.DKBM + ".jpg";
+            string fileName =Path.Combine(filePath , land.DKBM + ".jpg");
             if (File.Exists(fileName))
             {
                 return retEx;

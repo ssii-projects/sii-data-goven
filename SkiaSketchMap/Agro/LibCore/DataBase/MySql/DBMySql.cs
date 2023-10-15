@@ -161,20 +161,28 @@ namespace Agro.LibCore
                 var sa1 = s.Split('=');
                 if (sa1.Length == 2)
                 {
-                    var key = sa1[0];
-                    var val = sa1[1];
+                    var key = sa1[0].Trim();
+                    var val = sa1[1].Trim();
                     _conProperty[key] = val;
-                    if (sDatabaseName == null && StringUtil.isEqualIgnorCase(key, "database"))
+                    if (sDatabaseName == null && 
+                        (StringUtil.isEqualIgnorCase(key, "database")
+                        || StringUtil.isEqualIgnorCase(key, "Initial Catalog")))
                     {
                         sDatabaseName = val;
                     }
-                    if (StringUtil.isEqualIgnorCase(key, "uid"))
+                    if (StringUtil.isEqualIgnorCase(key, "uid")
+                        || StringUtil.isEqualIgnorCase(key, "User ID"))
                     {
                         this.UserID = val;
                     }
                 }
             }
             #endregion
+
+            if (string.IsNullOrEmpty(sDatabaseName))
+            {
+                sDatabaseName = QueryOne("select Database()")?.ToString()??"";
+            }
 
             DatabaseName = sDatabaseName;
 
@@ -264,7 +272,10 @@ namespace Agro.LibCore
         public override bool IsTableExists(string tableName)
         {
             var sql = $"select count(*) from information_schema.TABLES where TABLE_NAME='{tableName}' and table_schema = '{DatabaseName}'";
-            return QueryOneInt(sql) > 0;
+            //Console.WriteLine(sql);
+            var n = QueryOneInt(sql);// > 0;
+            //Console.WriteLine($"retsult is {n}");
+            return n > 0;
         }
         public override bool IsIndexExist(string tableName, string idxName)
         {

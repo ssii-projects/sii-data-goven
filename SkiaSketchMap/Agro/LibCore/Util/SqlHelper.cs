@@ -13,8 +13,12 @@
 using Agro.GIS;
 using Agro.LibCore.Database;
 using GeoAPI.Geometries;
-using System.Data.SQLite;
+//using System.Data.SQLite;
 using System.Linq.Expressions;
+
+using Microsoft.Data.Sqlite;
+using SQLiteConnection = Microsoft.Data.Sqlite.SqliteConnection;
+using SQLiteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
 
 namespace Agro.LibCore
 {
