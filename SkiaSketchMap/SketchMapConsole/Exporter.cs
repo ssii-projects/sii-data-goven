@@ -16,7 +16,7 @@ namespace SketchMap
 {
     internal class Exporter
     {
-        private readonly Logout _logout = new(null);//, false);
+        private readonly Logout _logout = new();//, false);
         private SkecthMapProperty _prm;
         public void Test(string[] args)
         {
@@ -83,7 +83,7 @@ namespace SketchMap
             using var db = GetDB(cons,dbType);// MySqlFeatureWorkspaceFactory.Instance.OpenWorkspace(cons);
             MyGlobal.Workspace = db;
 
-            var exporter = new SketchMapExporter()// this, null, pageLayout)
+            var exporter = new SketchMapExporter(_logout)// this, null, pageLayout)
             {
                 //DeleteJPGFolder = true
             };
@@ -223,8 +223,37 @@ namespace SketchMap
                     {
                         Directory.CreateDirectory(logPath);
                     }
-                    //logFile = Path.Combine(logPath, DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt");
-                    logFile = Path.Combine(logPath, DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
+                    else
+                    {
+                        var now=DateTime.Now;
+                        var lst=new List<string>();
+                        FileUtil.EnumFiles(logPath, fi =>
+                        {
+                            var n=fi.Name.LastIndexOf('.');
+                            var s=fi.Name.Substring(0, n);
+                            var sa=s.Split(' ');
+                            if (sa.Length > 0)
+                            {
+                                s = sa[0];
+                            }
+                            if(DateTime.TryParse(s, out DateTime dt))
+                            {
+                                if (dt.Year != now.Year || dt.Month != now.Month || dt.Day != now.Day)
+                                {
+                                    lst.Add(fi.FullName);
+                                }
+                            }
+                            return true;
+                        });
+                        foreach(var fi in lst)
+                        {
+                            try
+                            {
+                                File.Delete(fi);
+                            }catch { }
+                        }
+                    }
+                    logFile = Path.Combine(logPath, DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss.fff") + ".txt");
                     if (File.Exists(logFile))
                     {
                         try

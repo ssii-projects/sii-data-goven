@@ -14,13 +14,15 @@ namespace SketchMap
 {
     internal class SketchMapExporter
     {
+        private readonly Logout _logout;
         private SkecthMapProperty? MapProperty;
         private readonly PageLayout _plc;
         public readonly SpatialReference _spatialReference;
         public bool DeleteJPGFolder = false;
 
-        public SketchMapExporter(SpatialReference? spatialReference = null, PageLayout? plc = null)
+        public SketchMapExporter(Logout logout,SpatialReference? spatialReference = null, PageLayout? plc = null)
         {
+            _logout = logout;
             _plc = plc ?? new PageLayout(new SkiaDisplay());
             if (spatialReference == null)
             {
@@ -55,13 +57,13 @@ namespace SketchMap
 
             InitalizeAllView(concord, lands, tempPath, onError);
             InitalizeLocalView(concord, lands, tempPath, onError);
-            using var data = new OpenXmlExport//SkecthMapExport
-            {
-                MapProperty = MapProperty,
-                Contractor = concord,
-                DKS = lands,
-                FilePath = tempPath
-            };
+            using var data = new OpenXmlExport(_logout, concord, lands, MapProperty, tempPath);//SkecthMapExport
+            //{
+            //    //MapProperty = MapProperty,
+            //    //Contractor = concord,
+            //    //DKS = lands,
+            //    FilePath = tempPath
+            //};
             if (!Directory.Exists(data.FilePath))
             {
                 Directory.CreateDirectory(data.FilePath);

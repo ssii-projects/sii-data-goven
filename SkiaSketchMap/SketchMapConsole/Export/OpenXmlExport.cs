@@ -17,6 +17,7 @@ namespace SketchMap
 {
     internal class OpenXmlExport: OpenXmlWord
     {
+        private readonly Logout _logout;
         private readonly List<AgricultureLandRepertory> lands=new();
 
         /// <summary>
@@ -52,6 +53,20 @@ namespace SketchMap
 
 
         public bool DeleteTempFile { get; set; }
+
+        public OpenXmlExport(Logout logout, ContractConcord contractor
+            , List<VEC_CBDK> dKS, SkecthMapProperty mapProperty, string filePath)//, bool canEditor, bool deleteTempFile)
+        {
+            _logout = logout;
+            //this.lands = lands;
+            Contractor = contractor;
+            DKS = dKS;
+            MapProperty = mapProperty;
+            //FileName = fileName;
+            FilePath = filePath;
+            //CanEditor = canEditor;
+            //DeleteTempFile = deleteTempFile;
+        }
 
         public void Save(ContractConcord concord)
         {
@@ -134,13 +149,13 @@ namespace SketchMap
             {
                 SetCellValue(0, 7, 5, "1/1");
                 DeleteTable(1);
-                return 0;
+                return 1;
             }
             if (Contractor == null || Contractor.Lands == null || Contractor.Lands.Length <= 18)
             {
                 SetCellValue(0, 7, 5, "1/2");
                 SetCellValue(1, 4, 5, "2/2");
-                return 0;
+                return 2;
             }
 
             var body =Doc.MainDocumentPart!.Document.Body!;
@@ -169,12 +184,14 @@ namespace SketchMap
         /// </summary>     
         private void InsertPageLandPics(int pageCount, List<string> lstPicFiles)
         {
-            if (Contractor == null || Contractor.Lands.Length == 0)// || Contractor.Lands.Length <= 6)
+            if (Contractor == null || Contractor.Lands.Length == 0)
             {
+                _logout.WriteWarning($"InsertPageLandPics::Contractor == null || Contractor.Lands.Length == 0");
                 return;
             }
             var lands = Contractor.Lands;
             int landIndex = 0;
+            _logout.WriteWarning($"InsertPageLandPics::lands.Length={lands.Length} pageCount={pageCount}");
             for (var tableIndex = 0; tableIndex < pageCount; ++tableIndex)
             {
                 var rows = tableIndex == 0 ? 3 : 4;
@@ -227,6 +244,8 @@ namespace SketchMap
         {
             try
             {
+                //_logout.WriteInformation($"cell({rowIndex},{columnIndex}) picture file {imagePath} start insert ....");
+
                 InitalizeLandRepertory(land, rowIndex, columnIndex, tableIndex, 100, 100);
                 if (File.Exists(imagePath))
                 {
@@ -237,12 +256,19 @@ namespace SketchMap
                         var height =tableIndex==0? 4.83: 3.53;
 
                         SetCellPicture(cell!, imagePath, width, height);
+                        _logout.WriteInformation($"cell({rowIndex},{columnIndex}) picture file {imagePath} inserted");
                     }
+                }
+                else
+                {
+                    _logout.WriteInformation($"cell({rowIndex},{columnIndex}) picture file {imagePath} not exists.!!!");
                 }
             }
             catch (SystemException ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                _logout.WriteWarning($"InsertImageShape SystemException ex={ex.Message}");
+
+                //System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
 
