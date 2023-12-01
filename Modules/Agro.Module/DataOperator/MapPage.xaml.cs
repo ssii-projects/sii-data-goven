@@ -51,10 +51,13 @@ namespace Agro.Module.DataOperator
 		{
 			private readonly MapPage _p;
 			private readonly ContextMenu _layerMenu;
-			public LayerPanelContextMenu(MapPage p, AppType appType)
+			//private readonly AppType mAppType;
+
+            public LayerPanelContextMenu(MapPage p, AppType appType)
 			{
 				_p = p;
-				_layerMenu = p.sidePage.ContextMenu;
+				//mAppType = appType;
+                _layerMenu = p.sidePage.ContextMenu;
 				var map = p.mapControl.FocusMap;
 				InitContextMenu(appType);
 				p.miExportShapeFile.Click += (s, e) =>
@@ -171,8 +174,16 @@ namespace Agro.Module.DataOperator
 					if (fc is ShapeFileFeatureClass hfc)
 					{
 						hfc.Flush();
-						var shpFile = $"{fc.ConnectionString}{fc.TableName}.shp";
-						fok=ImportDkckTask.ShowDialog(Window.GetWindow(p), shpFile, eDatabaseType.ShapeFile);
+						if (appType == AppType.DataOperator_WebService)
+						{
+							_p.OnUploadData(hfc);
+							return;
+						}
+						else
+						{
+							var shpFile = $"{fc.ConnectionString}{fc.TableName}.shp";
+							fok = ImportDkckTask.ShowDialog(Window.GetWindow(p), shpFile, eDatabaseType.ShapeFile);
+						}
 					}
 					else
 					{
@@ -212,7 +223,7 @@ namespace Agro.Module.DataOperator
 					p.miAppend.Visibility = fEditableLayer&&fl?.FeatureClass is ShapeFileFeatureClass?Visibility.Visible:Visibility.Collapsed;
 					p.miModify.Visibility = p.miAppend.Visibility;
 					p.miExportCoords.Visibility = vis;
-					p.miUpload.Visibility =appType==AppType.DataGoven?vis:Visibility.Collapsed;
+					p.miUpload.Visibility =appType==AppType.DataGoven||appType==AppType.DataOperator_WebService?vis:Visibility.Collapsed;
 					p.miTargetLayerSep1.Visibility = vis;
 					p.miTargetLayerSep2.Visibility = vis;
 					#endregion
@@ -570,7 +581,7 @@ namespace Agro.Module.DataOperator
 		private Action OnBeforeDisposed;
 
 		protected readonly IMapPageImpl _impl;
-
+		public Action<ShapeFileFeatureClass> OnUploadData;
         public MapPage() : this(AppType.DataGoven)
 		{
 
@@ -1307,8 +1318,8 @@ namespace Agro.Module.DataOperator
 	public class MapPageShapeFileSource : MapPage
 	{
 		private readonly IFeatureClass _shpFc;
-		public MapPageShapeFileSource(IFeatureClass shpFc)
-			:base(AppType.DataOperator_ShapeFile)
+		public MapPageShapeFileSource(IFeatureClass shpFc,AppType appType= AppType.DataOperator_ShapeFile)
+			:base(appType)
 		{
 			_shpFc = shpFc;
 			btnDownload.Visibility = Visibility.Collapsed;

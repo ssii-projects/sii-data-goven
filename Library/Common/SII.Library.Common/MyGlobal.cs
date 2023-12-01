@@ -19,6 +19,10 @@ namespace Agro.Library.Common
 		/// </summary>
 		DataOperator_ShapeFile,
 		DataOperator_SQLite,
+		/// <summary>
+		/// 数据操作工具web服务
+		/// </summary>
+		DataOperator_WebService,
 	}
 	public class MyGlobal
 	{

@@ -38,9 +38,12 @@ namespace TestTool
 
 			try
 			{
-				AppPref.AppType = ConfigurationManager.AppSettings["AppType"] == "SQLiteWnd" ? AppType.DataOperator_SQLite : AppType.DataOperator_ShapeFile;
-                AppPref.UseDownFbfDk = ConfigurationManager.AppSettings["DownFbfDk"] == "true";
-				AppPref.DownLoadUrl = ConfigurationManager.AppSettings["DownLoadUrl"];
+				var sAppType = ConfigurationManager.AppSettings["AppType"];
+                AppPref.AppType =sAppType=="WebService"?AppType.DataOperator_WebService:(sAppType == "SQLiteWnd" ? AppType.DataOperator_SQLite : AppType.DataOperator_ShapeFile);
+
+                //AppPref.UseDownFbfDk = ConfigurationManager.AppSettings["DownFbfDk"] == "true";
+				AppPref.WebServiceUrl = ConfigurationManager.AppSettings["WebServiceUrl"];
+                //AppPref.UpLoadUrl = ConfigurationManager.AppSettings["UpLoadUrl"];
 
                 ApplicationData.SmallIcon = MyImageUtil.Image16("全图16.png");
 				var file = AppDomain.CurrentDomain.BaseDirectory + "data.db";

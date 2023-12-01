@@ -20,7 +20,7 @@ namespace DataOperatorTool
         public DownloadFbfDkTask()
         {
         }
-        public static void ShowDialog(Window owner)//MapControl mapControl, TocControl Toc)
+        public static void ShowDialog(Window owner,Action<string> onFileDownloaded)//MapControl mapControl, TocControl Toc)
         {
             var    ti = new ExportDkData();
             var dlg = new KuiDialog(owner, "下载地块数据")
@@ -51,6 +51,7 @@ namespace DataOperatorTool
                             if (ti.PropertyPage is ExportDkDataPropertyPage dpp)
                             {
                                 var shpFile = dpp.ExportFilePath;
+                                onFileDownloaded?.Invoke(shpFile);
                                 //AddShapeCommand.AddShapeFile(mapControl, Toc, shpFile, dpp.DatabaseType, false);
                             }
                             dlg.Close();

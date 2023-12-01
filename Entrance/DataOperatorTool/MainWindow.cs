@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using TestTool;
 using DataOperatorTool.OData;
+using System.Runtime.InteropServices;
+
 namespace DataOperatorTool
 {
     class MainWindow
@@ -37,7 +39,10 @@ namespace DataOperatorTool
                     dlg.Login = (user, name) =>
                     {
                         service.Login(user, name);
-                        DownloadFbfDkTask.ShowDialog(dlg);/// p.mainWnd);
+                        DownloadFbfDkTask.ShowDialog(dlg, shpFile =>
+                        {
+                            p.OpenFile(shpFile);
+                        });/// p.mainWnd);
                         //MessageBox.Show(service.Token,"token");
                         return null;
                     };
@@ -148,7 +153,14 @@ namespace DataOperatorTool
                 else
                 {
                     var fc = OuterDcdkRepository.OpenSrcFeatureClass(eDatabaseType.ShapeFile, fileName, true);
-                    var pnl = new MapPageShapeFileSource(fc);
+                    var pnl = new MapPageShapeFileSource(fc,AppPref.AppType);
+                    if(AppPref.AppType==AppType.DataOperator_WebService)
+                    {
+                        pnl.OnUploadData += shpFc =>
+                        {
+                            UploadService.Instance.UploadDkxxs(this, shpFc);
+                        };
+                    }
                     mainWnd.OpenPage(pnl, title, icon);
                 }
             }

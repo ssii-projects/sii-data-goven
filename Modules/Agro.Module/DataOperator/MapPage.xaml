@@ -148,7 +148,7 @@
 						<MenuItem x:Name="miAppend" Header="追加数据"/>
 						<MenuItem x:Name="miModify" Header="修改图形"/>
 						<Separator Name="miTargetLayerSep2"/>
-						<MenuItem x:Name="miUpload" Header="上传数据"/>
+						<MenuItem x:Name="miUpload" Header="上传变更数据"/>
 						<Separator Name="miTargetLayerSep3" Visibility="Collapsed"/>
 						<MenuItem x:Name="miExportJson" Header="导出地块更新数据包" Visibility="Collapsed"/>
 					</MenuItem>

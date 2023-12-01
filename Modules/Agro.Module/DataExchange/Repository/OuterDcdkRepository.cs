@@ -238,7 +238,7 @@ namespace Agro.Module.DataExchange.Repository
 			return eSjly;
 		}
 
-		internal void LoadChangeData(ICancelTracker cancel, Action<VEC_SURVEY_DK> callback,bool fRecycle=false)
+		public void LoadChangeData(ICancelTracker cancel, Action<VEC_SURVEY_DK> callback,bool fRecycle=false,bool fCheckFBFBM=true)
 		{
 			string? err = null;
 
@@ -279,10 +279,15 @@ namespace Agro.Module.DataExchange.Repository
 					return false;
 				}
 				err = NullableCheck(en);
-				if (err == null && xtpzLshRepository.FindByFbfbm(en.FBFDM) == null)
+
+				if (fCheckFBFBM)
 				{
-					err = $"第{oid}行记录有错，数据库中不存在发包方编码：{en.FBFDM}";
+					if (err == null && xtpzLshRepository.FindByFbfbm(en.FBFDM) == null)
+					{
+						err = $"第{oid}行记录有错，数据库中不存在发包方编码：{en.FBFDM}";
+					}
 				}
+
 				err = Check(err, () =>
 				{
 					#region 检查地块编码字段

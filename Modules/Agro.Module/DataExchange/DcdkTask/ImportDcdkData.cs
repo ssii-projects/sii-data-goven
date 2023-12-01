@@ -17,7 +17,7 @@ namespace Agro.Module.DataExchange
 	/// </summary>
 	public class ImportDcdkData : Task, ICloneable
 	{
-		class TopChecker:IDisposable
+		public class TopChecker:IDisposable
 		{
 			public class DkItem
 			{

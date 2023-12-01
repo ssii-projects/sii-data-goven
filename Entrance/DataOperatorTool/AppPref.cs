@@ -13,7 +13,14 @@ namespace DataOperatorTool
         /// <summary>
         /// 是否包含下载发包方地块功能
         /// </summary>
-        public static bool UseDownFbfDk { get; set; }
-        public static string DownLoadUrl { get; set; }
+        public static bool UseDownFbfDk
+        {
+            get
+            {
+                return AppType == AppType.DataOperator_WebService;
+            }
+        }
+        public static string WebServiceUrl { get; set; }=string.Empty;
+        //public static string UpLoadUrl { get;set; }=string.Empty;
     }
 }
